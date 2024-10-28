@@ -10,7 +10,7 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
 
     // Validate credentials
     if (username === validUsername && password === validPassword) {
-        alert("Login successful!");
+   
         // Redirect to loggedin.html
         window.location.href = "new-index.html"; // Replace with your actual file path
     } else {
