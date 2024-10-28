@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- FullCalendar CSS -->
+<!-- FullCalendar CSS -->
+
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+<!-- Include FullCalendar CSS and JS -->
+<link href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.10.1/main.min.css' rel='stylesheet' />
+<script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.10.1/main.min.js'></script>
+
+
+    <style>
+        /* General reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        /* Container to hold everything */
+        .container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        /* Menu bar styling */
+        .menu-bar {
+            height: 70px;
+            width: 100%;
+            background-color: #333;
+            color: white;
+            display: flex;
+            align-items:left ;
+            justify-content: center;
+            font-size: 1.2em;
+        }
+        /* Content area with 2 columns */
+        .content {
+            display: flex;
+            flex: 1;
+        }
+        /* Left column styling */
+        .column-left {
+            width: 25%;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .column-left select{
+            min-width: 50%;
+
+        }
+        .column-left button{
+            min-width: 100px;
+        }
+        /* Right column styling */
+        .column-right {
+            width: 75%;
+            background-color: #e9ecef;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        /* Row with combobox and button */
+        .row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        /* Table styling */
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .table th, .table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        .table th {
+            background-color: #f2f2f2;
+        }
+        /* Styling for rows within the right column */
+        .row-right {
+            display: flex;
+            width: 100%;
+            gap: 20px;
+        }
+        /* Big columns in the first row of column-right */
+        .big-column {
+        width: 40%;
+        display: flex;
+        gap: 4px; /* Reduced gap between small columns */
+    }
+        /* Smaller columns inside each big column */
+        .small-column {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            gap: 6px; /* Space between label-input pairs */
+        }
+        /* Label and input pair styling */
+        .label-input-pair {
+            display: flex;
+            align-items: center;
+            gap: 2px; /* Minimal space between label and input */
+        }
+        label {
+            font-size: 0.8em;
+            width: auto; /* Set width based on content */
+            white-space: nowrap;
+        }
+        input {
+            width: 100px; /* Smaller width for input */
+            padding: 2px; /* Minimal padding */
+            font-size: 0.8em;
+            margin: 0; /* Remove margin */
+        }
+        .small-column1 {
+    width: 33.33%; /* Adjusting each small column to take 1/3 of the big column */
+    display: flex;
+    flex-direction: column;
+    gap: 6px; /* Space between each label-input pair or checkbox */
+}
+.label-input-pair {
+    display: flex;
+    align-items: center; /* Align checkbox and label */
+    gap: 2px; /* Minimal space between checkbox and label */
+}
+
+input[type="checkbox"] {
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    width: 15px;
+    height: 15px;
+}
+
+label {
+    margin: 0; /* Remove default margin from labels */
+    font-size: 0.8em; /* Keep the font size small */
+}
+.menu-bar {
+    height: 70px; /* Height of the menu bar */
+    background-color: #333; /* Dark background for the navbar */
+    display: flex; /* Flexbox for layout */
+    align-items: left; /* Center items vertically */
+    padding: 0 20px; /* Horizontal padding for spacing */
+    text-align: center;;
+}
+
+.dropdown {
+    position: relative; /* Positioning for dropdown */
+    margin-right: 20px; /* Space between dropdowns */
+}
+
+.dropbtn {
+    background-color: #333; /* Same color as menu bar */
+    color: white; /* Text color */
+    padding: 15px 20px; /* Padding for button */
+    border: none; /* No border */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 1em; /* Font size */
+}
+
+.dropdown-content {
+    display: none; /* Hide dropdown content by default */
+    position: absolute; /* Position dropdown relative to the button */
+    background-color: #f9f9f9; /* Light background for dropdown */
+    min-width: 160px; /* Width of dropdown */
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Shadow effect */
+    z-index: 1; /* Ensure it appears on top */
+}
+
+.dropdown:hover .dropdown-content {
+    display: block; /* Show dropdown on hover */
+}
+
+.dropdown-content a {
+    color: black; /* Text color for dropdown items */
+    padding: 12px 16px; /* Padding for items */
+    text-decoration: none; /* No underline */
+    display: block; /* Make items block-level for easy clicking */
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd; /* Change background on hover */
+}
+.selectable-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.selectable-table th, .selectable-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.selectable-table th {
+    background-color: #f2f2f2;
+}
+
+.selectable-table tr:hover {
+    background-color: #f1f1f1; /* Highlight row on hover */
+    cursor: pointer;
+}
+
+.selectable-table tr.selected {
+    background-color: #4CAF50; /* Color for selected row */
+    color: white; /* Text color for selected row */
+}
+.selectable-table-left {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.selectable-table-left th,
+.selectable-table-left td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.selectable-table-left th {
+    background-color: #f2f2f2;
+}
+
+.selectable-table-left tr:hover {
+    background-color: #f1f1f1; /* Highlight row on hover */
+    cursor:pointer;
+}
+
+.selectable-table-left tr.selected {
+    background-color: #4CAF50; /* Color for selected row */
+    color: white; /* Text color for selected row */
+}
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%; /* Could be more or less, depending on screen size */
+    height: 60%; /* Fixed height */
+    overflow: auto; /* Allow scroll inside modal */
+    text-align: center; /* Center text and child elements */
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Style for calendars */
+
+/* Additional styling */
+.label-row, .labels-row, .action-row {
+    margin-bottom: 15px;
+    text-align: center; /* Center text in labels and action row */
+}
+.calendars {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.calendar {
+    flex: 1;
+    max-width: 200px; /* Set a maximum width for each calendar */
+    min-height: 300px; /* Set a minimum height to fit the calendar */
+    margin: 0 10px; /* Space between calendars */
+    padding: 10px; /* Padding inside the calendar */
+    border: 1px solid #ddd; /* Border around the calendar */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
+    display: flex;
+    flex-direction: column;
+}
+
+.calendar-header {
+    display: flex;
+    background-color: #f1f1f1; /* Light background for headers */
+    border-bottom: 1px solid #ccc; /* Border below the header */
+}
+
+.day-header {
+    flex: 1; /* Each day header takes equal space */
+    text-align: center; /* Center text in headers */
+    padding: 5px 0; /* Padding for better spacing */
+}
+
+.days-grid {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping for day cells */
+}
+
+.day-cell {
+    flex: 1; /* Each day cell takes equal space */
+    height: 40px; /* Fixed height for day cells */
+    text-align: center; /* Center text in cells */
+    line-height: 40px; /* Center text vertically */
+    border: 1px solid #eee; /* Light border for each day */
+}
+
+.day-cell.empty {
+    background-color: #f9f9f9; /* Different background for empty cells */
+}
+.menu-bar {
+    display: flex;
+    background-color: #333; /* Background color for the menu */
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropbtn {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none; /* Remove underline */
+}
+
+.dropbtn:hover {
+    background-color: #575757; /* Background color on hover */
+}
+
+/* Optional: style for the dropdown content if you decide to add it later */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block; /* Show dropdown on hover */
+}
+
+.selectable-table-left {
+    width: 100%;
+    border-collapse: collapse; /* Ensures no gaps between cells */
+    font-size: 14px;
+}
+
+.selectable-table-left th,
+.selectable-table-left td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+    font-size: 14px;
+}
+
+.selectable-table-left tbody tr {
+    cursor: pointer; /* Change cursor to indicate that rows are selectable */
+    font-size: 14px;
+}
+
+.selectable-table-left tbody tr:hover {
+    background-color: #e0e0e0; /* Highlight row on hover */
+}
+
+.selectable-table-left tbody tr.selected {
+    background-color: #007bff; /* Highlight selected row */
+    color: white; /* Change text color for better readability */
+}
+/* Container to hold label and input */
+.label-input-pair {
+    position: relative;
+    margin-bottom: 20px;
+    padding-right: 100px; /* Ensures inputs have space on the right */
+}
+
+/* Label styling */
+.label-input-pair label {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    white-space: nowrap;
+}
+
+/* Input styling */
+.label-input-pair input {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    max-width: 120px; /* Adjust width as needed */
+}
+.small-column select{
+    margin-bottom: 10px;
+}
+.small-column{
+    
+    margin-left: 5px;
+}
+/* Flex styling for each checkbox-label pair */
+.label-input-pair1 {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px; /* Minimal space between checkbox and label for a compact look */
+}
+
+/* Optional: Add styling to match C# Windows Forms checkbox appearance */
+.label-input-pair1 input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    margin: 0; /* Removes default margin */
+}
+.selectable-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .selectable-table th, .selectable-table td {
+            padding: 8px;
+            border: 1px solid #ddd;
+            color: black;
+
+            text-align: left;
+        }
+        .selectable-table {
+            width: 100%;
+            border-collapse: collapse;
+            color: black;
+
+        }
+        
+        /* Table row styles */
+        .selectable-table th, .selectable-table td {
+            padding: 8px;
+            border: 1px solid #ddd;
+            color: black;
+
+            text-align: left;
+        }
+        
+        /* Hover effect */
+        .selectable-table tbody tr:hover {
+            background-color: #f0f0f0;
+            color: black;
+            cursor: pointer;
+        }
+        
+        /* Selected row style */
+        .selectable-table tbody tr.selected {
+            background-color: #d0d0d0; /* Greyish color */
+            color: black;
+
+        }
+    </style>
+</head>
+<body>
+    <!-- Main container -->
+    <div class="container">
+        <!-- Menu bar -->
+        <div class="menu-bar">
+            <div class="dropdown">
+                <a class="dropbtn" href="clients.html">Клиенти</a>
+            </div>
+            
+            <div class="dropdown">
+                <a class="dropbtn" href="cars.html">Автомобили</a>
+            </div>
+            
+            <div class="dropdown">
+                <a class="dropbtn" href="contracts.html">Договори</a>
+            </div>
+            
+            <div class="dropdown">
+                <a class="dropbtn" href="spravki.html">Справки</a>
+            </div>
+            
+            <div class="dropdown">
+                <a class="dropbtn" href="drugo.html">Друго</a>
+            </div>
+        </div>
+        
+        
+        
+        
+
+        <!-- Content area with two columns -->
+        <div class="content">
+            <!-- Left column -->
+            <div class="column-left">
+                <!-- Row with combobox and button -->
+                <div class="row">
+                    <select>
+                        <option>Всички</option>
+                    </select>
+                    <button id="reshreshIt">Обнови</button>
+                </div>
+            <!-- Modal Structure -->
+            <div class="modal" id="myModal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    
+                    <div class="calendars">
+                        <div class="calendar" id="calendar1"></div>
+                        <div class="calendar" id="calendar2"></div>
+                        <div class="calendar" id="calendar3"></div>
+                    </div>
+                    
+                    <div class="label-row">
+                        <label for="label1">Номер на автомобил</label>
+                    </div>
+            
+                    <div class="labels-row">
+                        <label>Label 1</label>
+                        <label>Label 2</label>
+                        <label>Label 3</label>
+                        <label>Label 4</label>
+                        <label>Label 5</label>
+                    </div>
+            
+                    <div class="action-row">
+                        <input type="checkbox" id="checkbox">
+                        <input type="date" id="datepicker1">
+                        <input type="date" id="datepicker2">
+                        <button>Submit</button>
+                    </div>
+                </div>
+            </div>
+            
+                <!-- Table with 6 columns -->
+                <table class="selectable-table-left" style="font-size: 14px;">
+                    <thead>
+                        <tr>
+                            <th>Клас</th>
+                            <th>Марка</th>
+                            <th>Модел</th>
+                            <th>Номер</th>
+                            <th>Гориво</th>
+                            <th>Скорости</th>
+                        </tr>
+                    </thead>
+                    <tbody id="car-data">
+                        <tr>
+                            <td>
+Клас
+                            </td>
+                            <td>
+                                Марка
+                            </td>
+                            <td>
+                               Модел 
+                            </td>
+                            <td>
+                                Номер
+                            </td>
+                            <td>
+                                Гориво
+                            </td>
+                            <td>
+                               Скорости 
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+Клас
+                            </td>
+                            <td>
+                                Марка
+                            </td>
+                            <td>
+                               Модел 
+                            </td>
+                            <td>
+                                Номер
+                            </td>
+                            <td>
+                                Гориво
+                            </td>
+                            <td>
+                               Скорости 
+                            </td>
+                        </tr>
+                        <!-- Data will be populated here -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Right column -->
+            <div class="column-right">
+                <!-- First row inside right column -->
+                <div class="row-right">
+                    <!-- First big column (50%) -->
+                    <div class="big-column">
+                        <!-- First small column (50%) inside first big column -->
+                        <div class="small-column">
+                            <div class="label-input-pair">
+                                <label for="input1">Сключени договори</label>
+                                <input type="text" id="input1">
+                            </div>
+                            <div class="label-input-pair">
+                                <label for="input2">Дни</label>
+                                <input type="text" id="input2">
+                            </div>
+                            <div class="label-input-pair">
+                                <label for="input3">Изминати км</label>
+                                <input type="text" id="input3">
+                            </div>
+                            <div class="label-input-pair">
+                                <label for="input4">Калкулирана сума</label>
+                                <input type="text" id="input4">
+                            </div>
+                        </div>
+                        <!-- Second small column (50%) inside first big column -->
+                        <div class="small-column">
+                            <div class="label-input-pair">
+                                <label for="searchName">Търсене по име</label>
+                                <input type="text" id="searchName">
+                            </div>
+                            <div class="label-input-pair">
+                                <label for="searchPhone">Търсене по телефон</label>
+                                <input type="text" id="searchPhone">
+                            </div>
+                            <div class="label-input-pair">
+                                <label for="input7">Търсене по ЕГН</label>
+                                <input type="text" id="input7">
+                            </div>
+                            <div class="label-input-pair">
+                                <label for="input8">Търсене по резервация</label>
+                                <input type="text" id="input8">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Second big column (50%) -->
+<!-- Second big column (50%) -->
+<div class="big-column">
+    <!-- First small column (33.33%) inside the second big column -->
+    <div class="small-column">
+        <select id="searchLocationContracts">
+            <option value="">Локации</option>
+            <option value="София">София</option>
+            <option value="Пловдив">Пловдив</option>
+            <option value="">Други</option>
+
+        </select>
+        <div class="label-input-pair">
+            <label for="date1">От</label>
+            <input type="date" id="date1" value="">
+        </div>
+        <div class="label-input-pair">
+            <label for="date2">До</label>
+            <input type="date" id="date2" value="">
+        </div>
+    </div>
+
+    <!-- Second small column (33.33%) inside the second big column -->
+    <div class="small-column">
+        <div class="label-input-pair1">
+            <input type="checkbox" id="check1">
+            <label for="check1">За днес</label>
+        </div>
+        <div class="label-input-pair1">
+            <input type="checkbox" id="check2">
+            <label for="check2">За утре</label>
+        </div>
+        <div class="label-input-pair1">
+            <input type="checkbox" id="check3">
+            <label for="check3">За седмица</label>
+        </div>
+        <div class="label-input-pair1">
+            <input type="checkbox" id="check4">
+            <label for="check4">За месец</label>
+        </div>
+    </div>
+    
+
+    <!-- Third small column (33.33%) inside the second big column -->
+    <div class="small-column">
+        <div class="label-input-pair1">
+            <input type="checkbox" id="check5">
+            <label for="check5">Всички договори</label>
+        </div>
+        <div class="label-input-pair1"  style="margin-bottom: 20px;">
+            <input type="checkbox" id="check6">
+            <label for="check6" >Свободни коли</label>
+        </div>
+        <div class="label-input-pair">
+            <label for="date3">От</label>
+            <input type="date" id="date3">
+        </div>
+        <div class="label-input-pair">
+            <label for="date4">До</label>
+            <input type="date" id="date4">
+        </div>
+    </div>
+</div>
+
+                </div>
+
+                <!-- Second row inside right column -->
+                <!-- Right Column - Second Row with Table -->
+<div class="row-right">
+    <table class="selectable-table" id="tableContracts" style="font-size: 14px;">
+        <thead>
+            <tr>
+                <th>Шофьор</th>
+                <th>Дата на даване</th>
+                <th>Час на даване</th>
+                <th>Място на даване</th>
+                <th>Дата на връщане</th>
+                <th>Час на връщане</th>
+                <th>Място на връщане</th>
+                <th>Телефон</th>
+                <th>Вид на договор</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Иван Петров Георгиев</td>
+                <td>10.09.2024</td>
+                <td>08:30</td>
+                <td>Офис Пловдив, Летище</td>
+                <td>10.10.2024</td>
+                <td>17:30</td>
+                <td>Офис Пловдив, Летище</td>
+                <td>+359 88765234321</td>
+                <td>Договор</td>
+            </tr>
+            <tr>
+                <td>Мария Иванова Петрова</td>
+                <td>01.11.2024</td>
+                <td>09:00</td>
+                <td>Офис Пловдив, Летище</td>
+                <td>01.12.2024</td>
+                <td>12:00</td>
+                <td>Офис Пловдив, Летище</td>
+                                <td>+359 88711232233</td>
+                <td>Договор</td>
+            </tr>
+            <tr>
+                <td>Георги Стоянов Иванов</td>
+                <td>05.10.2024</td>
+                <td>14:45</td>
+                <td>Офис Пловдив, Бул. Руски 45</td>
+                <td>05.11.2024</td>
+                <td>14:45</td>
+                <td>Офис Пловдив, Бул. Руски 45</td>
+                <td>+359 88933234455</td>
+                <td>Договор</td>
+            </tr>
+            <tr>
+                <td>Десислава Василева Попова</td>
+                <td>20.09.2024</td>
+                <td>11:15</td>
+                <td>Офис Пловдив, Константин Величков 6</td>
+                                <td>20.10.2024</td>
+                <td>15:00</td>
+                <td>Офис Пловдив, Константин Величков 6</td>
+                                <td>+359 88566723788</td>
+                <td>Договор</td>
+            </tr>
+            <tr>
+                <td>Радослав Костов Димитров</td>
+                <td>12.08.2024</td>
+                <td>10:00</td>
+                <td>Офис Пловдив, Константин Величков 6</td>
+                                <td>12.09.2024</td>
+                <td>10:00</td>
+                <td>Офис Пловдив, Константин Величков 6</td>
+                                <td>+359 88452356677</td>
+                <td>Договор</td>
+            </tr>
+            <tr>
+                <td>Анелия Николова Христова</td>
+                <td>30.06.2024</td>
+                <td>13:00</td>
+                <td>Офис Пловдив, Константин Величков 6</td>
+                                <td>30.07.2024</td>
+                <td>13:00</td>
+                <td>Офис Пловдив, Константин Величков 6</td>
+                                <td>+359 88322322344</td>
+                <td>Договор</td>
+            </tr>
+            <tr>
+                <td>Кристина Георгиева Тошева</td>
+                <td>25.07.2024</td>
+                <td>09:30</td>
+                <td>Офис Пловдив, Константин Величков 6</td>
+                                <td>25.08.2024</td>
+                <td>11:30</td>
+                <td>Офис Пловдив, Константин Величков 6</td>
+                                <td>+359 8863312355</td>
+                <td>Договор</td>
+            </tr>
+            <tr>
+                <td>Петър Ангелов Маринов</td>
+                <td>03.05.2024</td>
+                <td>15:20</td>
+                <td>Офис Пловдив, Константин Величков 6</td>
+                                <td>03.06.2024</td>
+                <td>10:20</td>
+                <td>Офис Пловдив, Константин Величков 6</td>
+                                <td>+359 889123135</td>
+                <td>Договор</td>
+            </tr>
+            <tr>
+                <td>Надежда Павлова Симеонова</td>
+                <td>11.02.2024</td>
+                <td>12:45</td>
+                <td>Офис София, Източна Тангента 161</td>
+                                <td>11.03.2024</td>
+                <td>16:45</td>
+                <td>Офис София, Източна Тангента 161</td>
+                                <td>+359 8881231233</td>
+                <td>Договор</td>
+            </tr>
+            <tr>
+                <td>Тихомир Славов Колев</td>
+                <td>18.04.2024</td>
+                <td>10:15</td>
+                <td>Офис София, Източна Тангента 161</td>
+                <td>18.05.2024</td>
+                <td>14:15</td>
+                <td>Офис София, Източна Тангента 161</td>
+                                <td>+359 8884123123</td>
+                <td>Договор</td>
+            </tr>
+        </tbody>
+        
+    </table>
+</div>
+
+                
+            </div>
+        </div>
+    </div>
+
+        <script>
+            // Select all table rows in the tbody
+            const rows = document.querySelectorAll('#car-data tr');
+            let clickTimeout = null; // To track the click timeout
+        
+            // Add click event listener to each row
+            rows.forEach(row => {
+                row.addEventListener('click', function() {
+                    // Clear any previous timeout
+                    clearTimeout(clickTimeout);
+        
+                    // Set a new timeout for single click action
+                    clickTimeout = setTimeout(() => {
+                        // Toggle the 'selected' class on single click
+                        this.classList.toggle('selected');
+                    }, 200); // Delay to distinguish single click from double click
+                });
+        
+                row.addEventListener('dblclick', function() {
+                    // Clear the timeout to prevent the single click from triggering
+                    clearTimeout(clickTimeout);
+        
+                    // Perform double click action (example: show an alert)
+                    alert(`Double clicked on row: ${this.innerText}`);
+                    // Add your logic here for the double click action
+                });
+            });
+        </script>
+         <script>
+            document.getElementById("searchLocationContracts").addEventListener("change", function() {
+                const selectedLocation = this.value.toLowerCase(); // Get selected location in lowercase
+                const rows = document.querySelectorAll("#tableContracts tbody tr"); // Get all rows in the tbody
+                
+                rows.forEach(row => {
+                    const giveLocation = row.cells[3].textContent.toLowerCase(); // 4th cell - Място на даване
+                    
+                    
+                    // Check if the selected location matches either the "Място на даване" or "Място на връщане"
+                    if (selectedLocation === "" || giveLocation.includes(selectedLocation)) {
+                        row.style.display = ""; // Show row
+                    } else {
+                        row.style.display = "none"; // Hide row
+                    }
+                });
+            });
+        </script>
+         <script>
+            // JavaScript to handle row selection
+            document.querySelectorAll("#tableContracts tbody tr").forEach(row => {
+                row.addEventListener("click", function() {
+                    // Toggle 'selected' class on the clicked row
+                    this.classList.toggle("selected");
+                });
+            });
+        </script>
+        
+    <script>
+        document.getElementById("searchName").addEventListener("input", function() {
+            const query = this.value.toLowerCase();
+            const rows = document.querySelectorAll("#tableContracts tbody tr");
+            
+            // Show rows only if the input length is at least 3
+            if (query.length < 3) {
+                rows.forEach(row => row.style.display = "");
+                return; // Exit if less than 3 characters
+            }
+            
+            rows.forEach(row => {
+                const nameCell = row.cells[0].textContent.toLowerCase();
+                // Check if the name cell contains the query string
+                if (nameCell.includes(query)) {
+                    row.style.display = ""; // Show the row
+                } else {
+                    row.style.display = "none"; // Hide the row
+                }
+            });
+        });
+    </script>
+
+
+    
+        <script>
+            document.getElementById("searchPhone").addEventListener("input", function() {
+                const query = this.value.trim();
+                const rows = document.querySelectorAll("#tableContracts tbody tr");
+                
+                // Show rows only if the input length is at least 3
+                if (query.length < 3) {
+                    rows.forEach(row => row.style.display = "");
+                    return; // Exit if less than 3 characters
+                }
+                
+                rows.forEach(row => {
+                    const phoneCell = row.cells[7].textContent; // Get the content of the 8th cell (index 7)
+                    // Check if the phone cell contains the query string
+                    if (phoneCell.includes(query)) {
+                        row.style.display = ""; // Show the row
+                    } else {
+                        row.style.display = "none"; // Hide the row
+                    }
+                });
+            });
+        </script>
+    
+    <script>
+        // Set today's date as the default value for the date inputs
+        const today = new Date();
+        const todayString = today.toISOString().split('T')[0]; // Format: YYYY-MM-DD
+        document.getElementById("date1").value = todayString;
+        document.getElementById("date2").value = todayString;
+
+        // Function to filter table rows based on date range
+        function filterTableByDate() {
+            const startDate = new Date(document.getElementById("date1").value);
+            const endDate = new Date(document.getElementById("date2").value);
+            const rows = document.querySelectorAll("#tableContracts tbody tr");
+
+            rows.forEach(row => {
+                const dateStartCell = row.cells[1].textContent; // Get the content of the 2nd cell (start date)
+                const dateEndCell = row.cells[4].textContent; // Get the content of the 5th cell (end date)
+
+                // Convert to Date objects
+                const rowStartDate = new Date(dateStartCell.split('.').reverse().join('-')); // Convert DD.MM.YYYY to YYYY-MM-DD
+                const rowEndDate = new Date(dateEndCell.split('.').reverse().join('-'));
+
+                // Check if dates are within range
+                if ((rowStartDate >= startDate && rowStartDate <= endDate) || 
+                    (rowEndDate >= startDate && rowEndDate <= endDate)) {
+                    row.style.display = ""; // Show the row
+                } else {
+                    row.style.display = "none"; // Hide the row
+                }
+            });
+        }
+
+        // Event listeners for date inputs to filter table
+        document.getElementById("date1").addEventListener("change", filterTableByDate);
+        document.getElementById("date2").addEventListener("change", filterTableByDate);
+    </script>
+    <script>
+        // Function to check date range and filter rows based on checkbox selections
+        function filterTableByCheckboxes() {
+            const today = new Date();
+            const rows = document.querySelectorAll("#tableContracts tbody tr");
+
+            // Get checkbox states
+            const isTodayChecked = document.getElementById("check1").checked;
+            const isTomorrowChecked = document.getElementById("check2").checked;
+            const isWeekChecked = document.getElementById("check3").checked;
+            const isMonthChecked = document.getElementById("check4").checked;
+
+            // Calculate date ranges
+            const tomorrow = new Date(today);
+            tomorrow.setDate(today.getDate() + 1);
+
+            const weekFromNow = new Date(today);
+            weekFromNow.setDate(today.getDate() + 7);
+
+            const monthFromNow = new Date(today);
+            monthFromNow.setDate(today.getDate() + 30);
+
+            rows.forEach(row => {
+                const startDateCell = row.cells[1].textContent; // Get the content of the 2nd cell (start date)
+                const endDateCell = row.cells[4].textContent; // Get the content of the 5th cell (end date)
+                const rowStartDate = new Date(startDateCell.split('.').reverse().join('-')); // Convert DD.MM.YYYY to YYYY-MM-DD
+                const rowEndDate = new Date(endDateCell.split('.').reverse().join('-')); // Convert DD.MM.YYYY to YYYY-MM-DD
+
+                // Check if the row dates fall within any selected checkbox range
+                if (
+                    (isTodayChecked && rowStartDate.toDateString() === today.toDateString()) ||
+                    (isTomorrowChecked && rowStartDate.toDateString() === tomorrow.toDateString()) ||
+                    (isWeekChecked && ((rowStartDate >= today && rowStartDate <= weekFromNow) || 
+                                       (rowEndDate >= today && rowEndDate <= weekFromNow) ||
+                                       (rowStartDate <= today && rowEndDate >= weekFromNow))) ||
+                    (isMonthChecked && ((rowStartDate >= today && rowStartDate <= monthFromNow) || 
+                                        (rowEndDate >= today && rowEndDate <= monthFromNow) ||
+                                        (rowStartDate <= today && rowEndDate >= monthFromNow)))
+                ) {
+                    row.style.display = ""; // Show the row
+                } else {
+                    row.style.display = "none"; // Hide the row
+                }
+            });
+        }
+
+        // Event listeners for checkboxes to filter table
+        document.getElementById("check1").addEventListener("change", filterTableByCheckboxes);
+        document.getElementById("check2").addEventListener("change", filterTableByCheckboxes);
+        document.getElementById("check3").addEventListener("change", filterTableByCheckboxes);
+        document.getElementById("check4").addEventListener("change", filterTableByCheckboxes);
+        document.getElementById("reshreshIt").addEventListener("click", function() {
+            location.reload(); // Refresh the page
+        });
+
+    </script>
+</body>
+</html>

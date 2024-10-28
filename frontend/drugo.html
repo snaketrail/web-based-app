@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Two Column Layout with Tabs</title>
+    <style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    height: 100vh; /* Set the height of the body to 100% of the viewport height */
+}
+
+.menu-bar {
+    background-color: #333;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    display: flex; /* Use flexbox for the menu items */
+    justify-content: center; /* Center the dropdowns */
+}
+
+.dropdown {
+    margin: 0 15px; /* Space between dropdowns */
+}
+
+.dropbtn {
+    color: white;
+    text-decoration: none; /* Remove underline */
+    padding: 10px 15px;
+    transition: background-color 0.3s;
+}
+
+.dropbtn:hover {
+    background-color: #575757; /* Change background on hover */
+}
+
+.container {
+    display: flex;
+    height: calc(100vh - 60px); /* Adjust height to fill remaining space after the menu bar */
+    margin-top: 60px; /* Adjust for menu bar height */
+}
+
+.column {
+    flex: 1;
+    padding: 20px;
+}
+
+.column-left {
+    background-color: #f4f4f4;
+    max-width: 20%;
+}
+
+.column-right {
+    background-color: #e2e2e2;
+    max-width: 80%;
+}
+
+.tab-button {
+    display: block;
+    margin-bottom: 10px;
+    padding: 10px;
+    width: 100%;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.tab-button:hover {
+    background-color: #0056b3;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="menu-bar">
+            <div class="dropdown">
+                <a class="dropbtn" href="new-index.html">Начало</a>
+            </div>
+            <div class="dropdown">
+                <a class="dropbtn" href="clients.html">Клиенти</a>
+            </div>
+            <div class="dropdown">
+                <a class="dropbtn" href="cars.html">Автомобили</a>
+            </div>
+            <div class="dropdown">
+                <a class="dropbtn" href="contracts.html">Договори</a>
+            </div>
+            <div class="dropdown">
+                <a class="dropbtn" href="spravki.html">Справки</a>
+            </div>
+            <div class="dropdown">
+                <a class="dropbtn" href="drugo.html">Друго</a>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="column column-left">
+            <button class="tab-button" onclick="showContent('content1')">Button 1</button>
+            <button class="tab-button" onclick="showContent('content2')">Button 2</button>
+        </div>
+        <div class="column column-right">
+            <div id="content1" class="tab-content active">
+                <h2>Contract Agreement</h2>
+                <p><strong>Contract Number:</strong> 12345</p>
+                <p><strong>Date:</strong> October 28, 2024</p>
+            
+                <h3>Parties Involved:</h3>
+                <p><strong>Party A:</strong> John Doe<br>
+                   <strong>Address:</strong> 123 Main St, Anytown, USA</p>
+            
+                <p><strong>Party B:</strong> Jane Smith<br>
+                   <strong>Address:</strong> 456 Elm St, Othertown, USA</p>
+            
+                <h3>Agreement Terms:</h3>
+                <ol>
+                    <li><strong>Purpose of the Contract:</strong> This contract outlines the terms of the agreement between Party A and Party B regarding the sale of goods.</li>
+                    <li><strong>Terms of Payment:</strong> Party B agrees to pay Party A a total of $5,000 for the goods, payable in full by November 15, 2024.</li>
+                    <li><strong>Delivery Terms:</strong> The goods will be delivered to Party B’s address no later than November 30, 2024.</li>
+                    <li><strong>Governing Law:</strong> This contract shall be governed by the laws of the State of California.</li>
+                    <li><strong>Termination Clause:</strong> Either party may terminate this contract with a written notice 30 days prior to the desired termination date.</li>
+                </ol>
+            
+                <h3>Signatures:</h3>
+                <p>__________________________<br>
+                   <strong>John Doe</strong><br>
+                   Party A</p>
+            
+                <p>__________________________<br>
+                   <strong>Jane Smith</strong><br>
+                   Party B</p>
+            
+                <p>This contract is hereby agreed to by both parties.</p>
+            </div>
+            
+            <div id="content2" class="tab-content">
+                <h2>Dashboard</h2>
+                <div class="user-info">
+                    <h3>User Information</h3>
+                    <p><strong>Username:</strong> JohnDoe</p>
+                    <p><strong>Email:</strong> johndoe@example.com</p>
+                    <button class="logout-button" onclick="logout()">Logout</button>
+                </div>
+            
+                <div class="contracts-info">
+                    <h3>Last Made Contracts</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Contract Number</th>
+                                <th>Date</th>
+                                <th>Parties</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>12345</td>
+                                <td>October 28, 2024</td>
+                                <td>John Doe & Jane Smith</td>
+                                <td>Active</td>
+                            </tr>
+                            <tr>
+                                <td>12344</td>
+                                <td>October 15, 2024</td>
+                                <td>Alice Johnson & Bob Brown</td>
+                                <td>Completed</td>
+                            </tr>
+                            <tr>
+                                <td>12343</td>
+                                <td>October 1, 2024</td>
+                                <td>Charlie White & Dana Green</td>
+                                <td>Pending</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <script>
+        function showContent(contentId) {
+    // Hide all tab contents
+    const contents = document.querySelectorAll('.tab-content');
+    contents.forEach(content => {
+        content.classList.remove('active');
+    });
+
+    // Show the selected content
+    const activeContent = document.getElementById(contentId);
+    activeContent.classList.add('active');
+}
+
+// Show the first content by default
+document.addEventListener('DOMContentLoaded', () => {
+    showContent('content1');
+});
+
+    </script>
+</body>
+</html>

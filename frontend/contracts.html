@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            font-size: 13px;;
+        }
+
+        .menu-bar {
+            display: flex;
+            background-color: #333; /* Background color for the menu */
+            margin-bottom: 0px;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropbtn {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none; /* Remove underline */
+        }
+
+        .dropbtn:hover {
+            background-color: #575757; /* Background color on hover */
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between; /* Evenly distribute columns */
+        }
+
+        .column {
+            flex: 1; /* Equal width for each column */
+            margin: 0 5px; /* Space between columns */
+            background-color: #f4f4f4; /* Background color for columns */
+            padding: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .section {
+            background-color: white; /* Background color for sections */
+            margin: 5px 0; /* Space between sections */
+            padding: 5px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .input-group {
+            display: flex;
+            justify-content: space-between; /* Space between inputs */
+            flex-wrap: wrap; /* Wrap inputs if the screen is small */
+            margin-bottom: 5px; /* Space below input groups */
+        }
+
+        .input-group label {
+            margin-right: 10px; /* Space between label and input */
+            flex: 0 0 60px; /* Fixed width for labels */
+        }
+
+        .input-group input {
+            flex: 1; /* Inputs take remaining space */
+            padding: 5px; /* Padding inside the input */
+            border: 1px solid #ccc; /* Border for the input */
+            border-radius: 4px; /* Rounded corners */
+        }
+
+        .button {
+            display: block;
+            background-color: #007bff; /* Button background color */
+            color: white;
+            text-align: center;
+            padding: 5px;
+            margin: 5px 0;
+            text-decoration: none; /* Remove underline */
+            border-radius: 4px; /* Rounded corners */
+        }
+
+        .button:hover {
+            background-color: #0056b3; /* Darker button on hover */
+        }
+
+        .section {
+    margin: 5px; /* Optional margin for spacing */
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column; /* Arrange rows in a column */
+}
+
+.input-row {
+    display: flex;
+    align-items: center; /* Align items vertically in the center */
+    margin-bottom: 0; /* Space between rows */
+}
+
+label {
+    margin-right: 5px; /* Space between label and input */
+    width: 50px; /* Fixed width for labels */
+}
+.input-group input{
+    max-width: 120px;
+    max-height: 20px;
+}
+input {
+    flex: 1; /* Make input take the remaining space */
+    padding: 5px; /* Optional padding for input */
+    box-sizing: border-box; /* Include padding in width */
+}
+.input-row1 {
+    display: flex;           /* Use Flexbox for layout */
+    justify-content: space-between; /* Space between header and button */
+    align-items: center;    /* Vertically center items */
+    padding: 0;          /* Optional padding for spacing */
+}
+
+h2 {
+    margin: 0;              /* Remove default margin for better alignment */
+}
+
+button {
+    padding: 5px 10px;      /* Add some padding to the button */
+    font-size: 16px;        /* Adjust font size */
+    cursor: pointer;        /* Change cursor on hover */
+}
+.extra-roll-contracts {
+    display: flex;              /* Use flexbox for layout */
+    justify-content: center;    /* Center items horizontally */
+    align-items: center;        /* Center items vertically */
+    gap: 10px;                 /* Add space between items */
+    height: 10px;              /* Keep the height as defined */
+    margin-bottom: 20px;       /* Maintain bottom margin */
+}
+
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="menu-bar">
+            <div class="dropdown">
+                <a class="dropbtn" href="new-index.html">Начало</a>
+            </div>
+            <div class="dropdown">
+                <a class="dropbtn" href="clients.html">Клиенти</a>
+            </div>
+            
+            <div class="dropdown">
+                <a class="dropbtn" href="cars.html">Автомобили</a>
+            </div>
+            
+            <div class="dropdown">
+                <a class="dropbtn" href="contracts.html">Договори</a>
+            </div>
+            
+            <div class="dropdown">
+                <a class="dropbtn" href="spravki.html">Справки</a>
+            </div>
+            
+            <div class="dropdown">
+                <a class="dropbtn" href="drugo.html">Друго</a>
+            </div>
+        </div>
+    
+    </nav>
+    <div class="extra-roll-contracts" style="height: 10px; width: 100%; margin-bottom: 20px; text-align: center;padding: 10px 20px;">
+        <h2>Договор</h2>
+        <h2>№</h2>
+
+        <label for=""></label>
+        <label for="">Редакции</label>
+        <label for="">0</label>
+        <label for="">Продължения</label>
+        <label for="">0</label>
+
+        <button>asd</button>
+    </div>
+    
+
+    <div class="container">
+        <div class="column">
+            <div class="section">
+                <div class="input-group">
+                    <!-- Row 1: Header + Button -->
+                    <div class="input-row1">
+                        <h2>Header Title</h2>
+                        <button type="button">Click Me</button>
+                    </div>
+                    
+                    <!-- Row 2: Label 1 -->
+                    <div class="input-row">
+                        <label for="input1">Label 1:</label>
+                        <input type="text" id="input1" placeholder="Input 1">
+                    </div>
+            
+                    <!-- Row 3: Label 2 -->
+                    <div class="input-row">
+                        <label for="input2">Label 2:</label>
+                        <input type="text" id="input2" placeholder="Input 2">
+                    </div>
+            
+                    <!-- Row 4: Label 3 -->
+                    <div class="input-row">
+                        <label for="input3">Label 3:</label>
+                        <input type="text" id="input3" placeholder="Input 3">
+                    </div>
+            
+                    <!-- Row 5: Label 4 -->
+                    <div class="input-row">
+                        <label for="input4">Label 4:</label>
+                        <input type="text" id="input4" placeholder="Input 4">
+                    </div>
+                    <div class="input-row">
+                        <label for="input6">Label 5:</label>
+                        <input type="text" id="input6" placeholder="Input 5">
+                    </div>
+                    <!-- Row 6: Label + Text + Label + Date -->
+                    <div class="input-row">
+                        <label for="input5">Label 6:</label>
+                        <input type="text" id="input5" placeholder="Input 6">
+                        <label for="dateInput">Date:</label>
+                        <input type="date" id="dateInput">
+                    </div>
+            
+                    <!-- Row 7: Label 6 -->
+
+            
+                    <!-- Row 8: Label 7 -->
+                    <div class="input-row">
+                        <label for="input7">Label 7:</label>
+                        <input type="text" id="input7" placeholder="Input 7">
+                    </div>
+                </div>
+            </div>
+            
+            
+<div class="section">
+    <div class="input-group">
+        <!-- Row 1: Label 1 -->
+        <div class="input-row1">
+            <h2>Header Title</h2>
+            <button type="button">Click Me</button>
+        </div>
+
+        <!-- Row 2: Label 2 -->
+        <div class="input-row">
+            <label for="input2">Label 2:</label>
+            <input type="text" id="input2" placeholder="Input 2">
+        </div>
+
+        <!-- Row 3: Label 3 -->
+        <div class="input-row">
+            <label for="input3">Label 3:</label>
+            <input type="text" id="input3" placeholder="Input 3">
+        </div>
+        <div class="input-row">
+            <label for="input3">Label 3:</label>
+            <input type="text" id="input3" placeholder="Input 3">
+        </div>
+        <div class="input-row">
+            <label for="input3">Label 3:</label>
+            <input type="text" id="input3" placeholder="Input 3">
+        </div>
+        <div class="input-row">
+            <label for="input3">Label 3:</label>
+            <input type="text" id="input3" placeholder="Input 3">
+        </div>
+
+
+        <!-- Last Row: Label + Date + Label + Date -->
+        <div class="input-row">
+            <label for="dateInput1">Start Date:</label>
+            <input type="date" id="dateInput1">
+            <label for="dateInput2">End Date:</label>
+            <input type="date" id="dateInput2">
+        </div>
+    </div>
+
+
+            </div>
+            <div class="section">
+                <div class="input-group">
+                    <div class="input-row1">
+                        <h2>Header Title</h2>
+                        <button type="button">Click Me</button>
+                    </div>
+                    <div class="input-row">
+                        <label for="input2">Label 2:</label>
+                        <input type="text" id="input2" placeholder="Input 2">
+                    </div>
+                    <div class="input-row">
+                        <label for="input2">Label 2:</label>
+                        <input type="text" id="input2" placeholder="Input 2">
+                    </div>
+                    <div class="input-row">
+                        <label for="input2">Label 2:</label>
+                        <input type="text" id="input2" placeholder="Input 2">
+                    </div>
+                    <div class="input-row">
+                        <label for="input2">Label 2:</label>
+                        <input type="text" id="input2" placeholder="Input 2">
+                    </div>
+
+                    <div class="input-row">
+                        <label for="dateInput1">Start Date:</label>
+                        <input type="date" id="dateInput1">
+                        <label for="dateInput2">End Date:</label>
+                        <input type="date" id="dateInput2">
+                    </div>
+                </div>
+                
+            </div>
+            <div class="section">
+                <div class="input-group">
+                    <div class="input-row1">
+                        <h2>Header Title</h2>
+                        <button type="button">Click Me</button>
+                    </div>
+                    <div class="input-row">
+                        <label for="input2">Label 1:</label>
+                        <input type="text" id="input2" placeholder="Input 2">
+                    </div>
+                    <div class="input-row">
+                        <label for="input3">Label 2:</label>
+                        <input type="text" id="input3" placeholder="Input 3">
+                    </div>
+                    <div class="input-row">
+                        <label for="input4">Label 3:</label>
+                        <input type="text" id="input4" placeholder="Input 4">
+                    </div>
+                    <div class="input-row">
+                        <label for="input5">Label 4:</label>
+                        <input type="text" id="input5" placeholder="Input 5">
+                    </div>
+                    <div class="input-row">
+                        <label for="input6">Label 5:</label>
+                        <input type="text" id="input6" placeholder="Input 6">
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="column">
+            <div class="section">
+                <div class="input-group">
+                    <!-- Row 1: Header only -->
+                    <div class="input-row">
+                        <h2>Header Title</h2>
+                    </div>
+                    
+                    <!-- Row 2: Label + Dropdown + Label (Date) + Label (Hours) -->
+                    <div class="input-row">
+                        <label for="dropdown1">Label 1:</label>
+                        <select id="dropdown1">
+                            <option value="">Select an option</option>
+                            <option value="option1">Option 1</option>
+                            <option value="option2">Option 2</option>
+                        </select>
+                        <label for="dateInput1">Date:</label>
+                        <input type="date" id="dateInput1">
+                        <label for="hoursInput1">Hours:</label>
+                        <input type="time" id="hoursInput1">
+                    </div>
+            
+                    <!-- Row 3: Same structure as Row 2 -->
+                    <div class="input-row">
+                        <label for="dropdown2">Label 2:</label>
+                        <select id="dropdown2">
+                            <option value="">Select an option</option>
+                            <option value="option1">Option 1</option>
+                            <option value="option2">Option 2</option>
+                        </select>
+                        <label for="dateInput2">Date:</label>
+                        <input type="date" id="dateInput2">
+                        <label for="hoursInput2">Hours:</label>
+                        <input type="time" id="hoursInput2">
+                    </div>
+            
+                    <!-- Row 4: Label + Dropdown + Label + Textfield -->
+                    <div class="input-row">
+                        <label for="dropdown3">Label 3:</label>
+                        <select id="dropdown3">
+                            <option value="">Select an option</option>
+                            <option value="option1">Option 1</option>
+                            <option value="option2">Option 2</option>
+                        </select>
+                        <label for="textfield">Label 4:</label>
+                        <input type="text" id="textfield" placeholder="Input Text">
+                    </div>
+            
+                    <!-- Row 5: Label + Dropdown (only) -->
+                    <div class="input-row">
+                        <label for="dropdown4">Label 5:</label>
+                        <select id="dropdown4">
+                            <option value="">Select an option</option>
+                            <option value="option1">Option 1</option>
+                            <option value="option2">Option 2</option>
+                        </select>
+                    </div>
+            
+                    <!-- Row 6: Label + Dropdown (only) -->
+                    <div class="input-row">
+                        <label for="dropdown5">Label 6:</label>
+                        <select id="dropdown5">
+                            <option value="">Select an option</option>
+                            <option value="option1">Option 1</option>
+                            <option value="option2">Option 2</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="input-group">
+                    <!-- Row 1: Header and Button -->
+                    <div class="input-row1">
+                        <h2>Header Title</h2>
+                        <button type="button">Click Me</button>
+                    </div>
+                    
+                    <!-- Row 2: Label + Text + Label + Text -->
+                    <div class="input-row">
+                        <label for="input1">Label 1:</label>
+                        <input type="text" id="input1" placeholder="Input 1">
+                        <label for="input2">Label 2:</label>
+                        <input type="text" id="input2" placeholder="Input 2">
+                    </div>
+            
+                    <!-- Row 3: Label + Text + Label + Text -->
+                    <div class="input-row">
+                        <label for="input3">Label 3:</label>
+                        <input type="text" id="input3" placeholder="Input 3">
+                        <label for="input4">Label 4:</label>
+                        <input type="text" id="input4" placeholder="Input 4">
+                    </div>
+            
+                    <!-- Row 4: Label + Text + Label + Text -->
+                    <div class="input-row">
+                        <label for="input5">Label 5:</label>
+                        <input type="text" id="input5" placeholder="Input 5">
+                        <label for="input6">Label 6:</label>
+                        <input type="text" id="input6" placeholder="Input 6">
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class="section">
+                <div class="input-group">
+                    <!-- Row 1: Label + Text + Label + Dropdown -->
+                    <div class="input-row">
+                        <label for="input1">Label 1:</label>
+                        <input type="text" id="input1" placeholder="Input 1">
+                        <label for="dropdown1">Label 2:</label>
+                        <select id="dropdown1">
+                            <option value="">Select an option</option>
+                            <option value="option1">Option 1</option>
+                            <option value="option2">Option 2</option>
+                        </select>
+                    </div>
+            
+                    <!-- Row 2: Label + Dropdown -->
+                    <div class="input-row">
+                        <label for="dropdown2">Label 3:</label>
+                        <select id="dropdown2">
+                            <option value="">Select an option</option>
+                            <option value="option1">Option 1</option>
+                            <option value="option2">Option 2</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class="section">
+                <div class="input-group">
+                    <!-- Row 1: Three Header Labels -->
+                    <div class="input-row">
+                        <h3>Header 1</h3>
+                        <h3>Header 2</h3>
+                        <h3>Header 3</h3>
+                    </div>
+                    
+                    <!-- Row 2: Checkbox, Label, Text -->
+                    <div class="input-row">
+                        <input type="checkbox" id="check1">
+                        <label for="input1">Label 1:</label>
+                        <input type="text" id="input1" placeholder="Input 1">
+                    </div>
+            
+                    <!-- Row 3: Checkbox, Label, Text -->
+                    <div class="input-row">
+                        <input type="checkbox" id="check2">
+                        <label for="input2">Label 2:</label>
+                        <input type="text" id="input2" placeholder="Input 2">
+                    </div>
+            
+                    <!-- Row 4: Checkbox, Label, Text, Text -->
+                    <div class="input-row">
+                        <input type="checkbox" id="check3">
+                        <label for="input3">Label 3:</label>
+                        <input type="text" id="input3" placeholder="Input 3">
+                        <input type="text" id="input3b" placeholder="Input 3B">
+                    </div>
+            
+                    <!-- Row 5: Checkbox, Label, Text, Text -->
+                    <div class="input-row">
+                        <input type="checkbox" id="check4">
+                        <label for="input4">Label 4:</label>
+                        <input type="text" id="input4" placeholder="Input 4">
+                        <input type="text" id="input4b" placeholder="Input 4B">
+                    </div>
+            
+                    <!-- Row 6: Checkbox, Label, Text, Text -->
+                    <div class="input-row">
+                        <input type="checkbox" id="check5">
+                        <label for="input5">Label 5:</label>
+                        <input type="text" id="input5" placeholder="Input 5">
+                        <input type="text" id="input5b" placeholder="Input 5B">
+                    </div>
+            
+                    <!-- Row 7: Checkbox, Label, Text, Text -->
+                    <div class="input-row">
+                        <input type="checkbox" id="check6">
+                        <label for="input6">Label 6:</label>
+                        <input type="text" id="input6" placeholder="Input 6">
+                        <input type="text" id="input6b" placeholder="Input 6B">
+                    </div>
+            
+                    <!-- Row 8: Checkbox, Label, Text, Text -->
+                    <div class="input-row">
+                        <input type="checkbox" id="check7">
+                        <label for="input7">Label 7:</label>
+                        <input type="text" id="input7" placeholder="Input 7">
+                        <input type="text" id="input7b" placeholder="Input 7B">
+                    </div>
+            
+                    <!-- Row 9: Checkbox, Label, Text, Text -->
+                    <div class="input-row">
+                        <input type="checkbox" id="check8">
+                        <label for="input8">Label 8:</label>
+                        <input type="text" id="input8" placeholder="Input 8">
+                        <input type="text" id="input8b" placeholder="Input 8B">
+                    </div>
+            
+                    <!-- Row 10: Checkbox, Label, Text, Text -->
+                    <div class="input-row">
+                        <input type="checkbox" id="check9">
+                        <label for="input9">Label 9:</label>
+                        <input type="text" id="input9" placeholder="Input 9">
+                        <input type="text" id="input9b" placeholder="Input 9B">
+                    </div>
+            
+                    <!-- Row 11: Checkbox, Label, Text, Text -->
+                    <div class="input-row">
+                        <input type="checkbox" id="check10">
+                        <label for="input10">Label 10:</label>
+                        <input type="text" id="input10" placeholder="Input 10">
+                        <input type="text" id="input10b" placeholder="Input 10B">
+                    </div>
+            
+                    <!-- Row 12: Checkbox, Label, Text, Text -->
+                    <div class="input-row">
+                        <input type="checkbox" id="check11">
+                        <label for="input11">Label 11:</label>
+                        <input type="text" id="input11" placeholder="Input 11">
+                        <input type="text" id="input11b" placeholder="Input 11B">
+                    </div>
+            
+                    <!-- Row 13: Checkbox, Label, Text, Text -->
+                    <div class="input-row">
+                        <input type="checkbox" id="check12">
+                        <label for="input12">Label 12:</label>
+                        <input type="text" id="input12" placeholder="Input 12">
+                        <input type="text" id="input12b" placeholder="Input 12B">
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="column">
+            <div class="section">
+                <div class="input-group">
+                    <!-- Row 1: Header -->
+                    <div class="input-row">
+                        <h2>Header Title</h2>
+                    </div>
+            
+                    <!-- Row 2: Text Area -->
+                    <div class="input-row">
+                        <label for="textarea">Description:</label>
+                        <textarea id="textarea" placeholder="Enter your text here..." rows="4" cols="50"></textarea>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class="section">
+                <div class="input-group">
+                    <div class="input-row">
+                        <h2>Header Title</h2>
+                    </div>
+            
+                    <div class="input-row">
+                        <label for="input2">Label 2:</label>
+                        <input type="text" id="input2" placeholder="Input 2">
+                    </div>
+                    <div class="input-row">
+                        <label for="input3">Label 3:</label>
+                        <input type="text" id="input3" placeholder="Input 3">
+                    </div>
+                    <div class="input-row">
+                        <label for="input4">Label 4:</label>
+                        <input type="text" id="input4" placeholder="Input 4">
+                    </div>
+                    <div class="input-row">
+                        <label for="input5">Label 5:</label>
+                        <input type="text" id="input5" placeholder="Input 5">
+                    </div>
+                    <div class="input-row">
+                        <label for="input6">Label 6:</label>
+                        <input type="text" id="input6" placeholder="Input 6">
+                    </div>
+                    <div class="input-row">
+                        <label for="input6">Label 7:</label>
+                        <input type="text" id="input7" placeholder="Input 7">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">Section 3C</div>
+            <div class="section">Section 3D</div>
+        </div>
+        <div class="column">
+            <a href="#" class="button">Button 1</a>
+            <a href="#" class="button">Button 2</a>
+            <a href="#" class="button">Button 3</a>
+            <a href="#" class="button">Button 4</a>
+            <a href="#" class="button">Button 5</a>
+            <a href="#" class="button">Button 6</a>
+        </div>
+    </div>
+</body>
+</html>

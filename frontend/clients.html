@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clients Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .form-group label {
+            flex: 1; /* Ensures labels take equal space */
+            margin-right: 10px;
+        }
+        .form-group input, .form-group textarea {
+            flex: 2; /* Input fields take more space */
+        }
+        .two-column {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+        .menu-bar {
+    display: flex;
+    background-color: #333; /* Background color for the menu */
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropbtn {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none; /* Remove underline */
+}
+
+.dropbtn:hover {
+    background-color: #575757; /* Background color on hover */
+}
+
+/* Optional: style for the dropdown content if you decide to add it later */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block; /* Show dropdown on hover */
+}
+
+    </style>
+</head>
+<body>
+    <div class="menu-bar">
+        <div class="dropdown">
+            <a class="dropbtn" href="new-index.html">Начало</a>
+        </div>
+        <div class="dropdown">
+            <a class="dropbtn" href="clients.html">Клиенти</a>
+        </div>
+        
+        <div class="dropdown">
+            <a class="dropbtn" href="cars.html">Автомобили</a>
+        </div>
+        
+        <div class="dropdown">
+            <a class="dropbtn" href="contracts.html">Договори</a>
+        </div>
+        
+        <div class="dropdown">
+            <a class="dropbtn" href="spravki.html">Справки</a>
+        </div>
+        
+        <div class="dropdown">
+            <a class="dropbtn" href="drugo.html">Друго</a>
+        </div>
+    </div>
+    
+
+    <div>
+        <h2>Add New Client</h2>
+        <div class="two-column">
+            <div class="form-group">
+                <label for="clientId">ID:</label>
+                <input type="text" id="clientId">
+            </div>
+            <div class="form-group">
+                <label for="clientName">Name:</label>
+                <input type="text" id="clientName">
+            </div>
+            <div class="form-group">
+                <label for="clientEmail">Email:</label>
+                <input type="email" id="clientEmail">
+            </div>
+            <div class="form-group">
+                <label for="clientPhone">Phone:</label>
+                <input type="text" id="clientPhone">
+            </div>
+            <div class="form-group">
+                <label for="clientAddress">Address:</label>
+                <input type="text" id="clientAddress">
+            </div>
+            <div class="form-group">
+                <label for="licenseNumber">License Number:</label>
+                <input type="text" id="licenseNumber">
+            </div>
+            <div class="form-group">
+                <label for="issuedDate">Issued Date:</label>
+                <input type="date" id="issuedDate">
+            </div>
+            <div class="form-group">
+                <label for="issuedBy">Issued By:</label>
+                <input type="text" id="issuedBy">
+            </div>
+            <div class="form-group">
+                <label for="idNumber">ID Number:</label>
+                <input type="text" id="idNumber">
+            </div>
+            <div class="form-group">
+                <label for="idIssuedBy">ID Issued By:</label>
+                <input type="text" id="idIssuedBy">
+            </div>
+            <div class="form-group">
+                <label for="idIssuedOn">ID Issued On:</label>
+                <input type="date" id="idIssuedOn">
+            </div>
+            <div class="form-group">
+                <label for="additionalInfo">Additional Info:</label>
+                <textarea id="additionalInfo"></textarea>
+            </div>
+        </div>
+        <button id="addClientButton">Add Client</button>
+    </div>
+
+    <h2>Existing Clients</h2>
+    <table id="clientTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>License Number</th>
+                <th>Issued Date</th>
+                <th>Issued By</th>
+                <th>ID Number</th>
+                <th>ID Issued By</th>
+                <th>ID Issued On</th>
+                <th>Additional Info</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="client-data">
+            <!-- Data will be populated here -->
+        </tbody>
+    </table>
+
+    <script>
+        // Function to fetch clients and populate the table
+        function fetchClients() {
+            fetch('/api/clients')
+                .then(response => response.json())
+                .then(data => {
+                    const tableBody = document.getElementById('client-data');
+                    tableBody.innerHTML = ''; // Clear existing rows
+                    data.forEach(client => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${client.id}</td>
+                            <td>${client.name}</td>
+                            <td>${client.email}</td>
+                            <td>${client.phone}</td>
+                            <td>${client.address}</td>
+                            <td>${client.licenseNumber}</td>
+                            <td>${client.issuedDate}</td>
+                            <td>${client.issuedBy}</td>
+                            <td>${client.idNumber}</td>
+                            <td>${client.idIssuedBy}</td>
+                            <td>${client.idIssuedOn}</td>
+                            <td>${client.additionalInfo}</td>
+                            <td>
+                                <button onclick="editClient('${client.id}')">Edit</button>
+                                <button onclick="deleteClient('${client.id}')">Delete</button>
+                            </td>
+                        `;
+                        tableBody.appendChild(row);
+                    });
+                });
+        }
+
+        // Function to add a new client
+        document.getElementById('addClientButton').addEventListener('click', () => {
+            const newClient = {
+                id: document.getElementById('clientId').value,
+                name: document.getElementById('clientName').value,
+                email: document.getElementById('clientEmail').value,
+                phone: document.getElementById('clientPhone').value,
+                address: document.getElementById('clientAddress').value,
+                licenseNumber: document.getElementById('licenseNumber').value,
+                issuedDate: document.getElementById('issuedDate').value,
+                issuedBy: document.getElementById('issuedBy').value,
+                idNumber: document.getElementById('idNumber').value,
+                idIssuedBy: document.getElementById('idIssuedBy').value,
+                idIssuedOn: document.getElementById('idIssuedOn').value,
+                additionalInfo: document.getElementById('additionalInfo').value,
+            };
+
+            fetch('/api/clients', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(newClient)
+            })
+            .then(response => {
+                if (response.ok) {
+                    fetchClients(); // Refresh the client list
+                    // Reset form fields
+                    resetForm();
+                } else {
+                    console.error('Failed to add client');
+                }
+            });
+        });
+
+        // Function to edit a client
+        function editClient(clientId) {
+            const row = document.querySelector(`#client-data tr td:first-child:contains('${clientId}')`).parentElement;
+            const name = row.children[1].innerText;
+            const email = row.children[2].innerText;
+            const phone = row.children[3].innerText;
+            const address = row.children[4].innerText;
+            const licenseNumber = row.children[5].innerText;
+            const issuedDate = row.children[6].innerText;
+            const issuedBy = row.children[7].innerText;
+            const idNumber = row.children[8].innerText;
+            const idIssuedBy = row.children[9].innerText;
+            const idIssuedOn = row.children[10].innerText;
+            const additionalInfo = row.children[11].innerText;
+
+            document.getElementById('clientId').value = clientId;
+            document.getElementById('clientName').value = name;
+            document.getElementById('clientEmail').value = email;
+            document.getElementById('clientPhone').value = phone;
+            document.getElementById('clientAddress').value = address;
+            document.getElementById('licenseNumber').value = licenseNumber;
+            document.getElementById('issuedDate').value = issuedDate;
+            document.getElementById('issuedBy').value = issuedBy;
+            document.getElementById('idNumber').value = idNumber;
+            document.getElementById('idIssuedBy').value = idIssuedBy;
+            document.getElementById('idIssuedOn').value = idIssuedOn;
+            document.getElementById('additionalInfo').value = additionalInfo;
+
+            // Update client on button click
+            document.getElementById('addClientButton').innerText = 'Update Client';
+            document.getElementById('addClientButton').onclick = () => {
+                const updatedClient = {
+                    name: document.getElementById('clientName').value,
+                    email: document.getElementById('clientEmail').value,
+                    phone: document.getElementById('clientPhone').value,
+                    address: document.getElementById('clientAddress').value,
+                    licenseNumber: document.getElementById('licenseNumber').value,
+                    issuedDate: document.getElementById('issuedDate').value,
+                    issuedBy: document.getElementById('issuedBy').value,
+                    idNumber: document.getElementById('idNumber').value,
+                    idIssuedBy: document.getElementById('idIssuedBy').value,
+                    idIssuedOn: document.getElementById('idIssuedOn').value,
+                    additionalInfo: document.getElementById('additionalInfo').value,
+                };
+
+                fetch(`/api/clients/${clientId}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(updatedClient)
+                })
+                .then(response => {
+                    if (response.ok) {
+                        fetchClients(); // Refresh the client list
+                    } else {
+                        console.error('Failed to update client');
+                    }
+                });
+
+                // Reset the button and input fields
+                resetForm();
+            };
+        }
+
+        // Function to delete a client
+        function deleteClient(clientId) {
+            fetch(`/api/clients/${clientId}`, {
+                method: 'DELETE'
+            })
+            .then(response => {
+                if (response.ok) {
+                    fetchClients(); // Refresh the client list
+                } else {
+                    console.error('Failed to delete client');
+                }
+            });
+        }
+
+        // Function to reset form fields
+        function resetForm() {
+            document.getElementById('clientId').value = '';
+            document.getElementById('clientName').value = '';
+            document.getElementById('clientEmail').value = '';
+            document.getElementById('clientPhone').value = '';
+            document.getElementById('clientAddress').value = '';
+            document.getElementById('licenseNumber').value = '';
+            document.getElementById('issuedDate').value = '';
+            document.getElementById('issuedBy').value = '';
+            document.getElementById('idNumber').value = '';
+            document.getElementById('idIssuedBy').value = '';
+            document.getElementById('idIssuedOn').value = '';
+            document.getElementById('additionalInfo').value = '';
+            document.getElementById('addClientButton').innerText = 'Add Client';
+        }
+
+        // Initial fetch of clients
+        fetchClients();
+    </script>
+</body>
+</html>

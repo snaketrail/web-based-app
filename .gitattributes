@@ -1,2 +1,18 @@
+# Ignore node_modules and other common backend files
+backend/
+backend/node_modules/
+backend/*.json
+backend/server.js
+
+# Ignore all files in the backend directory
+# Uncomment the next line if you want to ignore all files inside the backend directory
+# backend/**
+
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# Ignore log files
+*.log
+
+# Ignore environment variables files
+.env

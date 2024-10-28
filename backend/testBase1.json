@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "name": "John Doe",
+    "email": "john@example.com",
+    "phone": "123-456-7890",
+    "address": "123 Elm St, Springfield",
+    "licenseNumber": "A123456",
+    "issuedDate": "2020-01-01",
+    "issuedBy": "State DMV",
+    "idNumber": "ID123456789",
+    "idIssuedBy": "State Government",
+    "idIssuedOn": "2020-01-01",
+    "additionalInfo": "No additional info."
+  },
+  {
+    "id": 2,
+    "name": "Jane Smith",
+    "email": "jane@example.com",
+    "phone": "234-567-8901",
+    "address": "456 Oak St, Springfield",
+    "licenseNumber": "B234567",
+    "issuedDate": "2021-02-02",
+    "issuedBy": "State DMV",
+    "idNumber": "ID234567890",
+    "idIssuedBy": "State Government",
+    "idIssuedOn": "2021-02-02",
+    "additionalInfo": "No additional info."
+  },
+  {
+    "id": 3,
+    "name": "Alice Johnson",
+    "email": "alice@example.com",
+    "phone": "345-678-9012",
+    "address": "789 Pine St, Springfield",
+    "licenseNumber": "C345678",
+    "issuedDate": "2022-03-03",
+    "issuedBy": "State DMV",
+    "idNumber": "ID345678901",
+    "idIssuedBy": "State Government",
+    "idIssuedOn": "2022-03-03",
+    "additionalInfo": "No additional info."
+  },
+  {
+    "id": 4,
+    "name": "Bob Brown",
+    "email": "bob@example.com",
+    "phone": "456-789-0123",
+    "address": "321 Maple St, Springfield",
+    "licenseNumber": "D456789",
+    "issuedDate": "2023-04-04",
+    "issuedBy": "State DMV",
+    "idNumber": "ID456789012",
+    "idIssuedBy": "State Government",
+    "idIssuedOn": "2023-04-04",
+    "additionalInfo": "No additional info."
+  }
+]

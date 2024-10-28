@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .form-group label {
+            margin-right: 10px;
+            flex: 0 0 80px;
+        }
+        .form-group input {
+            flex: 1;
+            padding: 8px;
+            margin-right: 10px;
+        }
+        #addCarButton, #updateCarButton {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .selected {
+            background-color: #d1e7dd;
+        }
+        .menu-bar {
+    display: flex;
+    background-color: #333; /* Background color for the menu */
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropbtn {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none; /* Remove underline */
+}
+
+.dropbtn:hover {
+    background-color: #575757; /* Background color on hover */
+}
+
+/* Optional: style for the dropdown content if you decide to add it later */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block; /* Show dropdown on hover */
+}
+
+    </style>
+</head>
+<body>
+    <div class="menu-bar">
+        <div class="dropdown">
+            <a class="dropbtn" href="new-index.html">Начало</a>
+        </div>
+        <div class="dropdown">
+            <a class="dropbtn" href="clients.html">Клиенти</a>
+        </div>
+        
+        <div class="dropdown">
+            <a class="dropbtn" href="cars.html">Автомобили</a>
+        </div>
+        
+        <div class="dropdown">
+            <a class="dropbtn" href="contracts.html">Договори</a>
+        </div>
+        
+        <div class="dropdown">
+            <a class="dropbtn" href="spravki.html">Справки</a>
+        </div>
+        
+        <div class="dropdown">
+            <a class="dropbtn" href="drugo.html">Друго</a>
+        </div>
+    </div>
+    
+
+    <div>
+        <h2>Add/Edit Car</h2>
+        <div class="form-group">
+            <label for="class">Class:</label>
+            <input type="text" id="class">
+            <label for="brand">Brand:</label>
+            <input type="text" id="brand">
+            <label for="model">Model:</label>
+            <input type="text" id="model">
+            <label for="number">Number:</label>
+            <input type="text" id="number">
+            <label for="fuel">Fuel:</label>
+            <input type="text" id="fuel">
+            <label for="gears">Gears:</label>
+            <input type="text" id="gears">
+        </div>
+        <button id="addCarButton">Add Car</button>
+        <button id="updateCarButton" style="display:none;">Update Car</button>
+    </div>
+
+    <h2>Existing Cars</h2>
+    <table id="carTable">
+        <thead>
+            <tr>
+                <th>Клас</th>
+                <th>Марка</th>
+                <th>Модел</th>
+                <th>Номер</th>
+                <th>Гориво</th>
+                <th>Скорости</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="car-data">
+            <!-- Data will be populated here -->
+        </tbody>
+    </table>
+
+</body>
+</html>
