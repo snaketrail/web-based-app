@@ -23,20 +23,40 @@
         /* Container to hold everything */
         .container {
             width: 100vw;
-            height: 100vh;
+            height: 92vh;
             display: flex;
             flex-direction: column;
+            margin-top: 71px;
         }
         /* Menu bar styling */
+
         .menu-bar {
-            height: 70px;
-            width: 100%;
-            background-color: #333;
-            color: white;
             display: flex;
-            align-items:left ;
-            justify-content: center;
-            font-size: 1.2em;
+            background-color: #333;
+            margin-bottom: 20px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            font-size: 16px !important;
+        }
+
+        .dropdown {
+            position: relative;
+            font-size: 16px !important;
+
+        }
+
+        .dropbtn {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 10px 20px !important;
+            text-decoration: none;
+        }
+
+        .dropbtn:hover {
+            background-color: #575757;
         }
         /* Content area with 2 columns */
         .content {
@@ -144,14 +164,14 @@ label {
     margin: 0; /* Remove default margin from labels */
     font-size: 0.8em; /* Keep the font size small */
 }
-.menu-bar {
-    height: 70px; /* Height of the menu bar */
-    background-color: #333; /* Dark background for the navbar */
-    display: flex; /* Flexbox for layout */
-    align-items: left; /* Center items vertically */
-    padding: 0 20px; /* Horizontal padding for spacing */
+/* .menu-bar {
+    height: 70px; 
+    background-color: #333; 
+    display: flex; 
+    align-items: left;
+    padding: 0 20px; 
     text-align: center;;
-}
+} */
 
 .dropdown {
     position: relative; /* Positioning for dropdown */
@@ -330,27 +350,28 @@ label {
 .day-cell.empty {
     background-color: #f9f9f9; /* Different background for empty cells */
 }
+
 .menu-bar {
-    display: flex;
-    background-color: #333; /* Background color for the menu */
-}
+            display: flex;
+            background-color: #333;
+            margin-bottom: 20px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+        }
 
-.dropdown {
-    position: relative;
-}
+        .dropdown {
+            position: relative;
+        }
 
-.dropbtn {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none; /* Remove underline */
-}
-
-.dropbtn:hover {
-    background-color: #575757; /* Background color on hover */
-}
-
+        .dropbtn {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
 /* Optional: style for the dropdown content if you decide to add it later */
 .dropdown-content {
     display: none;
@@ -476,6 +497,7 @@ label {
             color: black;
 
         }
+
     </style>
 </head>
 <body>

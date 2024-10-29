@@ -16,34 +16,27 @@ body {
     height: 100vh; /* Set the height of the body to 100% of the viewport height */
 }
 
+
 .menu-bar {
-    background-color: #333;
-    color: white;
-    padding: 15px;
-    text-align: center;
-    position: absolute;
-    width: 100%;
-    top: 0;
-    left: 0;
-    display: flex; /* Use flexbox for the menu items */
-    justify-content: center; /* Center the dropdowns */
-}
+            display: flex;
+            background-color: #333;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+        }
 
-.dropdown {
-    margin: 0 15px; /* Space between dropdowns */
-}
+        .dropdown {
+            position: relative;
+        }
 
-.dropbtn {
-    color: white;
-    text-decoration: none; /* Remove underline */
-    padding: 10px 15px;
-    transition: background-color 0.3s;
-}
-
-.dropbtn:hover {
-    background-color: #575757; /* Change background on hover */
-}
-
+        .dropbtn {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
 .container {
     display: flex;
     height: calc(100vh - 60px); /* Adjust height to fill remaining space after the menu bar */
@@ -116,8 +109,8 @@ body {
     </nav>
     <div class="container">
         <div class="column column-left">
-            <button class="tab-button" onclick="showContent('content1')">Button 1</button>
-            <button class="tab-button" onclick="showContent('content2')">Button 2</button>
+            <button class="tab-button" onclick="showContent('content1')">Промени по договора</button>
+            <button class="tab-button" onclick="showContent('content2')">Допълнителна информация</button>
         </div>
         <div class="column column-right">
             <div id="content1" class="tab-content active">

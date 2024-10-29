@@ -3,82 +3,311 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Car Management</title>
+    <title>Clients Management</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
         }
+
+        .menu-bar {
+            display: flex;
+            background-color: #333;
+            margin-bottom: 20px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropbtn {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .dropbtn:hover {
+            background-color: #575757;
+        }
+
+        .row {
+            display: flex;
+            gap: 10px;
+            margin-top: 60px; /* Added margin to space it below the menu */
+            height: 92vh;
+        }
+
+        .form-container {
+            flex: 0 0 20%;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .table-container {
+            flex: 0 0 50%;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+            overflow: auto;
+        }
+
+        .button-container {
+            flex: 0 0 10%;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            align-items: center;
+            padding: 10px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        /* Table styles */
         table {
             width: 100%;
             border-collapse: collapse;
+            margin-top: 10px;
         }
+
         th, td {
             border: 1px solid #ddd;
             padding: 8px;
             text-align: left;
         }
+
         th {
             background-color: #f2f2f2;
         }
-        .form-group {
-            margin-bottom: 15px;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-        .form-group label {
-            margin-right: 10px;
-            flex: 0 0 80px;
-        }
-        .form-group input {
-            flex: 1;
-            padding: 8px;
-            margin-right: 10px;
-        }
-        #addCarButton, #updateCarButton {
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-        .selected {
-            background-color: #d1e7dd;
-        }
-        .menu-bar {
-    display: flex;
-    background-color: #333; /* Background color for the menu */
-}
 
-.dropdown {
-    position: relative;
-}
-
-.dropbtn {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none; /* Remove underline */
-}
-
-.dropbtn:hover {
-    background-color: #575757; /* Background color on hover */
-}
-
-/* Optional: style for the dropdown content if you decide to add it later */
-.dropdown-content {
-    display: none;
-    position: absolute;
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+        /* General Form Container Styles */
+.form-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 5px auto;
+    padding: 5px;
     background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.dropdown:hover .dropdown-content {
-    display: block; /* Show dropdown on hover */
+/* Form Title */
+.form-container h2 {
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+    font-size: 15px;
 }
+
+/* Form Group Styles */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5px;
+}
+
+/* Label Styling */
+.form-group label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+/* Input Fields */
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="date"],
+.form-group textarea {
+    padding: 5px;
+    font-size: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Two-Column Layout for Form Groups */
+.form-group-row {
+    display: flex;
+    gap: 5px;
+    justify-content: space-between;
+}
+
+/* Styling for Textarea */
+textarea {
+    resize: vertical;
+    min-height: 60px;
+}
+
+/* Button Styling */
+button {
+    width: 100%;
+    padding: 15px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 12px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+
+}
+.form-container button{
+    margin-top: 20px;
+}
+button:hover {
+    background-color: #218838;
+}
+
+/* Responsive Design for Small Screens */
+@media (max-width: 600px) {
+    .form-container {
+        padding: 15px;
+    }
+    .form-group-row {
+        flex-direction: column;
+    }
+}
+/* Flex container for form-group-row */
+.form-group-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px; /* Space between rows */
+}
+
+/* Form group width adjustment for rows with two columns */
+.form-group-row .form-group {
+    flex: 1; /* Ensures equal width */
+}
+
+/* Adjust label and input style */
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.form-group input[type="date"] {
+    width: 100%;
+    padding: 8px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+.crud-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#crudOperations {
+    padding: 8px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    color: #333;
+    cursor: pointer;
+    flex-grow: 1;
+    width: 100%;
+}
+
+#crudOperations:focus {
+    outline: none;
+    border-color: #28a745;
+}
+
+#searchButton {
+    padding: 8px 16px;
+    font-size: 1em;
+    color: white;
+    background-color: #28a745;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 0;
+}
+
+#searchButton:hover {
+    background-color: #218838;
+}
+.button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    max-width: 250px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-size: 14px;
+    color: black;
+    margin-bottom: 3px;
+}
+
+.form-group input {
+    padding: 3px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#searchButton {
+    padding: 10px;
+    font-size: 14px;
+    color: white;
+    background-color: #28a745;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+#searchButton:hover {
+    background-color: #218838;
+}
+
 
     </style>
 </head>
@@ -90,62 +319,233 @@
         <div class="dropdown">
             <a class="dropbtn" href="clients.html">Клиенти</a>
         </div>
-        
         <div class="dropdown">
             <a class="dropbtn" href="cars.html">Автомобили</a>
         </div>
-        
         <div class="dropdown">
             <a class="dropbtn" href="contracts.html">Договори</a>
         </div>
-        
         <div class="dropdown">
             <a class="dropbtn" href="spravki.html">Справки</a>
         </div>
-        
         <div class="dropdown">
             <a class="dropbtn" href="drugo.html">Друго</a>
         </div>
     </div>
-    
 
-    <div>
-        <h2>Add/Edit Car</h2>
-        <div class="form-group">
-            <label for="class">Class:</label>
-            <input type="text" id="class">
-            <label for="brand">Brand:</label>
-            <input type="text" id="brand">
-            <label for="model">Model:</label>
-            <input type="text" id="model">
-            <label for="number">Number:</label>
-            <input type="text" id="number">
-            <label for="fuel">Fuel:</label>
-            <input type="text" id="fuel">
-            <label for="gears">Gears:</label>
-            <input type="text" id="gears">
+    <div class="row">
+        <!-- Add New Client Form -->
+        <div class="form-container">
+            <div class="crud-container">
+                <select id="crudOperations">
+                    <option value="add">Добави автомобил</option>
+                    <option value="edit">Редактирай автомобил</option>
+                    <option value="delete">Изтрий автомобил</option>
+                </select>
+            </div>   
+            
+            <!-- License Plate -->
+            <div class="form-group">
+                <label for="licensePlate">Рег. №</label>
+                <input type="text" id="licensePlate">
+            </div>
+                    <!-- Type -->
+                    <div class="form-group">
+                        <label for="type">Клас</label>
+                        <input type="text" id="type">
+                    </div>
+            <!-- Brand -->
+            <div class="form-group-row">
+                <div class="form-group">
+                    <label for="brand">Марка</label>
+                    <input type="text" id="brand">
+                </div>
+            
+                <div class="form-group">
+                    <label for="model">Модел</label>
+                    <input type="text" id="model">
+                </div>
+            </div>
+            
+            <div class="form-group-row">
+                <div class="form-group">
+                    <label for="dailyRate">Цена</label>
+                    <input type="number" id="dailyRate" step="0.01">
+                </div> 
+     
+                <div class="form-group">
+                    <label for="depositRate">Депозит</label>
+                    <input type="number" id="depositRate" step="0.01">
+                </div>
+            </div>
+            <!-- Daily Rate -->
+
+
+            <!-- Color -->
+            <div class="form-group">
+                <label for="color">Цвят</label>
+                <input type="text" id="color">
+            </div>
+        
+
+            <!-- Fuel Type -->
+            <div class="form-group">
+                <label for="fuelType">Гориво</label>
+                <input type="text" id="fuelType">
+            </div>
+     
+        
+            <!-- Gearbox -->
+            <div class="form-group">
+                <label for="gearbox">Скорости</label>
+                <input type="text" id="gearbox">
+            </div>
+        
+            <!-- Description -->
+            <div class="form-group">
+                <label for="description">Бележки</label>
+                <textarea id="description" rows="3"></textarea>
+            </div>
+        
+            <!-- Additional Features -->
+            <div class="form-group-row">
+ 
+                <div class="form-group">
+                    <label for="otherFeature1">Цена за Стъкла и Гуми</label>
+                    <input type="text" id="otherFeature1">
+                </div>
+            
+                <div class="form-group">
+                    <label for="otherFeature2">Цена за ВИП застраховка</label>
+                    <input type="text" id="otherFeature2">
+                </div>
+            </div>
+            
+        
+            <!-- Availability in Countries -->
+            <div class="form-group-row">
+                <div class="form-group">
+                    <label for="availability1">Цена за Гърция</label>
+                    <input type="text" id="availability1">
+                </div>
+            
+                <div class="form-group">
+                    <label for="availability2">Цена за Румъния</label>
+                    <input type="text" id="availability2">
+                </div>
+            
+                <div class="form-group">
+                    <label for="availability3">Цена за Македония</label>
+                    <input type="text" id="availability3">
+                </div>
+            
+                <div class="form-group">
+                    <label for="availability4">Цена за Сърбия</label>
+                    <input type="text" id="availability4">
+                </div>
+            </div>
+            
+        
+            <!-- Fees -->
+            <div class="form-group-row">
+                <div class="form-group">
+                    <label for="fees">Данък</label>
+                    <input type="date" style="max-width: 100px;" id="fees">
+                </div>
+            
+                <div class="form-group">
+                    <label for="inspection">Преглед</label>
+                    <input type="date" style="max-width: 100px;" id="inspection">
+                </div>
+            
+                <div class="form-group">
+                    <label for="insurance">Винетка</label>
+                    <input type="date" style="max-width: 100px;" id="insurance">
+                </div>
+            
+                <div class="form-group">
+                    <label for="additionalFees">Каско</label>
+                    <input type="date" style="max-width: 100px;" id="additionalFees">
+                </div>
+            
+                <div class="form-group">
+                    <label for="miscellaneous">Гражданска</label>
+                    <input type="date" style="max-width: 100px;" id="miscellaneous">
+                </div>
+            </div>
+            
+        
+            <!-- Submit Button -->
+            <div class="buttonMarker" style="max-width: 60%; margin: 0 auto; display: flex; justify-content: center; align-items: center;">
+                <button id="addClientButton">Добави автомобил</button>
+            </div>
+            
         </div>
-        <button id="addCarButton">Add Car</button>
-        <button id="updateCarButton" style="display:none;">Update Car</button>
+        
+        
+
+        <!-- Table Container -->
+        <div class="table-container">
+            <h2>Автомобили</h2>
+            <table id="clientTable">
+                <thead>
+                    <tr>
+                        <th>Клас</th>
+                        <th>Марка</th>
+                        <th>Модел</th>
+                        <th>Рег. №</th>
+                        <th>Гориво</th>
+                        <th>Скорости</th>
+
+                        
+                    </tr>
+                </thead>
+                <tbody id="client-data">
+                    <!-- Data will be populated here -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Button Container -->
+        <div class="button-container">
+            <!-- Search by Name -->
+            <div class="form-group">
+                <label for="searchByName">Търсене по клас</label>
+                <input type="text" id="searchByName" placeholder="Enter name">
+            </div>
+        
+            <!-- Search by ID -->
+            <div class="form-group">
+                <label for="searchById">Търсене по модел</label>
+                <input type="text" id="searchById" placeholder="Enter ID">
+            </div>
+        
+            <!-- Search by Phone -->
+            <div class="form-group">
+                <label for="searchByPhone">Търсене по марка</label>
+                <input type="text" id="searchByPhone" placeholder="Enter phone number">
+            </div>
+        
+            <!-- Search by Reservation Code -->
+            <div class="form-group">
+                <label for="searchByReservation">Търсене по рег. №</label>
+                <input type="text" id="searchByReservation" placeholder="Enter reservation code">
+            </div>
+
+            
+            <!-- Search Button -->
+            <button id="searchButton">Търси</button>
+        </div>
+        
     </div>
-
-    <h2>Existing Cars</h2>
-    <table id="carTable">
-        <thead>
-            <tr>
-                <th>Клас</th>
-                <th>Марка</th>
-                <th>Модел</th>
-                <th>Номер</th>
-                <th>Гориво</th>
-                <th>Скорости</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody id="car-data">
-            <!-- Data will be populated here -->
-        </tbody>
-    </table>
-
+    <script>
+        const crudDropdown = document.getElementById("crudOperations");
+        const actionButton = document.getElementById("addClientButton");
+    
+        // Function to update the button text based on the selected option
+        crudDropdown.addEventListener("change", () => {
+            actionButton.textContent = crudDropdown.options[crudDropdown.selectedIndex].text;
+        });
+    </script>
 </body>
 </html>

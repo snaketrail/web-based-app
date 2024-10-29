@@ -9,13 +9,20 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            font-size: 13px;;
+            font-size: 14px;
+
+            overflow: hidden;
+            max-width: 100%;
         }
 
         .menu-bar {
             display: flex;
-            background-color: #333; /* Background color for the menu */
-            margin-bottom: 0px;
+            background-color: #333;
+            margin-bottom: 20px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
         }
 
         .dropdown {
@@ -27,23 +34,25 @@
             color: white;
             text-align: center;
             padding: 14px 16px;
-            text-decoration: none; /* Remove underline */
+            text-decoration: none;
         }
 
         .dropbtn:hover {
-            background-color: #575757; /* Background color on hover */
+            background-color: #575757;
         }
-
         .container {
             display: flex;
             justify-content: space-between; /* Evenly distribute columns */
+            max-width: 100%;
+            padding: 0;
+            margin-top: 30px;
         }
 
         .column {
             flex: 1; /* Equal width for each column */
             margin: 0 5px; /* Space between columns */
             background-color: #f4f4f4; /* Background color for columns */
-            padding: 10px;
+            padding: 0;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
@@ -62,8 +71,7 @@
         }
 
         .input-group label {
-            margin-right: 10px; /* Space between label and input */
-            flex: 0 0 60px; /* Fixed width for labels */
+
         }
 
         .input-group input {
@@ -104,16 +112,14 @@
 }
 
 label {
-    margin-right: 5px; /* Space between label and input */
-    width: 50px; /* Fixed width for labels */
+    margin-right: 0px; /* Space between label and input */
 }
 .input-group input{
-    max-width: 120px;
-    max-height: 20px;
+
 }
 input {
     flex: 1; /* Make input take the remaining space */
-    padding: 5px; /* Optional padding for input */
+    padding: 0px; /* Optional padding for input */
     box-sizing: border-box; /* Include padding in width */
 }
 .input-row1 {
@@ -128,8 +134,8 @@ h2 {
 }
 
 button {
-    padding: 5px 10px;      /* Add some padding to the button */
-    font-size: 16px;        /* Adjust font size */
+    padding: 2px 4px;      /* Add some padding to the button */
+    font-size: 12px;        /* Adjust font size */
     cursor: pointer;        /* Change cursor on hover */
 }
 .extra-roll-contracts {
@@ -141,6 +147,449 @@ button {
     margin-bottom: 20px;       /* Maintain bottom margin */
 }
 
+
+/* Optional: Style the header and button */
+
+
+
+/* CSS specific to the first section */
+
+
+/* CSS specific to the first section */
+.tenant-section .input-row {
+    display: flex;
+    align-items: center;
+
+}
+
+.tenant-section label {
+    flex: 0 0 40%; /* Labels take up 30% of the row width */
+
+}
+
+.tenant-section .wide-input {
+    flex: 1; /* Input fields take up the remaining row width */
+
+    box-sizing: border-box;
+    min-width: 55%;
+}
+
+/* Optional: Style the header and button */
+.tenant-section h2 {
+    font-size: 1.1em;
+
+}
+
+
+
+
+/* Specific styling for the driver section */
+.driver-section .input-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2px; /* Space between rows */
+    gap: 10px; /* Space between label and input */
+}
+
+.driver-section label {
+    flex: 0 0 40%; /* Labels take up 30% of the row width */
+    margin-right: 2px;
+}
+
+.driver-section .wide-input {
+    flex: 1; /* Input fields take up the remaining row width */
+    padding: 2px;
+    box-sizing: border-box;
+    min-width: 55%;
+}
+/* Styling for the two date input fields in the last row */
+.driver-section .wide-input-date {
+    width: 35%; /* Narrower width to fit two date fields in one row */
+    padding: 2px;
+    box-sizing: border-box;
+}
+
+/* Optional: Header and button styling */
+.driver-section h2 {
+    font-size: 1.1rem;
+    margin-bottom: 2px;
+}
+
+.driver-section button {
+    padding: 2px 4px;
+    margin-left: auto;
+}
+/* Specific styling for the second driver section */
+.second-driver-section .input-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2px; /* Space between rows */
+    gap: 10px; /* Space between label and input */
+}
+
+.second-driver-section label {
+    flex: 0 0 30%; /* Labels take up 30% of the row width */
+    margin-right: 2px;
+}
+
+.second-driver-section .wide-input {
+    flex: 1; /* Input fields take up the remaining row width */
+    padding: 2px;
+    box-sizing: border-box;
+    min-width: 60%;
+}
+/* Date input styling for the last row */
+.second-driver-section .wide-input-date {
+    width: 25%; /* Width adjusted for two date fields on one row */
+    padding: 2px;
+    box-sizing: border-box;
+}
+
+/* Header and button styling */
+.second-driver-section h2 {
+    font-size: 1.2em;
+    margin-bottom: 2px;
+}
+
+.second-driver-section button {
+    padding: 2px 4px;
+    margin-left: auto;
+}
+
+
+/* Styling for the company section */
+.company-section .input-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2px; /* Space between rows */
+    gap: 10px; /* Space between label and input */
+}
+
+.company-section label {
+    flex: 0 0 30%; /* Labels take up 30% of the row width */
+    margin-right: 20px;
+}
+
+.company-section .wide-input {
+    flex: 1; /* Input fields take up the remaining row width */
+    padding: 2px;
+    box-sizing: border-box;
+    min-width: 60%;
+}
+
+/* Optional: Header and button styling */
+.company-section h2 {
+    font-size: 1.2em;
+    margin-bottom: 2px;
+}
+
+.company-section button {
+    padding: 2px 4px;
+    margin-left: auto;
+}
+
+
+
+/* Styling specific to the rental data section */
+.rental-label {
+    flex: 55% 0 0; /* Labels take up 35% of the row, increasing width */
+    margin-right: 2px; /* Space between label and input */
+}
+
+/* Adjustments for other elements in input rows */
+.section .input-row select,
+.section .input-row input[type="date"],
+.section .input-row input[type="time"],
+.section .input-row input[type="text"] {
+    flex: 1; /* Remaining elements take up the remaining space */
+    padding: 2px; /* Padding for usability */
+    box-sizing: border-box; /* Ensure padding does not affect width */
+}
+
+/* Optional: Styling for header */
+.section h2 {
+    font-size: 1.2em; /* Header font size */
+    margin-bottom: 2px; /* Space below header */
+}
+
+
+
+/* Styling specific to the vehicle section */
+.vehicle-section .input-row {
+    display: flex;
+    align-items: center; /* Align items vertically center */
+    margin-bottom: 2px; /* Space between rows */
+}
+
+/* Adjust label styles */
+.vehicle-section label {
+    flex: 0 0 20%; /* Labels take up 30% of the row */
+    margin-right: 3px; /* Space between label and input */
+}
+
+/* Adjust input styles */
+.vehicle-section input[type="text"] {
+    flex: 1; /* Inputs take up the remaining space */
+    padding: 2px; /* Padding for usability */
+    box-sizing: border-box; /* Ensure padding doesn't affect width */
+}
+
+/* Optional: Header and button styling */
+.vehicle-section h2 {
+    font-size: 1.2em; /* Header font size */
+    margin-bottom: 2px; /* Space below header */
+}
+
+/* Button styling */
+.vehicle-section button {
+    padding: 2px 4px; /* Button padding */
+    margin-left: auto; /* Push button to the right */
+}
+
+
+/* Styling specific to the section */
+.reservation-section .input-row {
+    display: flex; /* Use flexbox to align items */
+    align-items: center; /* Center items vertically */
+    margin-bottom: 0; /* Space between rows */
+}
+
+/* Adjust label styles */
+.reservation-section .rental-label {
+    flex: 0 0 30%; /* Labels take up 30% of the row */
+    margin-right: 5px; /* Space between label and input/select */
+}
+
+/* Adjust input and select styles */
+.reservation-section input[type="text"],
+.reservation-section select,
+.reservation-section input[type="date"],
+.reservation-section input[type="time"] {
+    flex: 1; /* Inputs and selects take up the remaining space */
+    padding: 4px; /* Padding for usability */
+    box-sizing: border-box; /* Ensure padding doesn't affect width */
+}
+
+/* Optional: Style date and time input group */
+.date-input-group {
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Center items vertically */
+}
+
+/* Additional adjustments to date and time inputs */
+.date-input-group label {
+    flex: 0 0 25%; /* Each label takes up 25% of the row */
+    margin-right: 5px; /* Space between label and input */
+}
+
+.date-input-group input {
+    flex: 1; /* Inputs take up remaining space */
+    margin-right: 5px; /* Space between inputs */
+}
+
+/* Remove the margin from the last input in date and time groups to prevent overflow */
+.date-input-group input:last-child {
+    margin-right: 0; /* Remove margin from the last input */
+}
+
+/* Optional: Add styling for headers if needed */
+.reservation-section h2 {
+    font-size: 1.2em; /* Header font size */
+    margin-bottom: 10px; /* Space below header */
+}
+
+.custom-section {
+    display: flex; /* Use flexbox to arrange columns */
+    flex-direction: row; /* Ensure columns are in a row */
+    justify-content: space-between; /* Evenly distribute columns */
+    max-width: 100%;
+    padding: 0; /* No extra padding */
+}
+
+/* Specific column styles */
+.custom-column {
+    display: flex; 
+    flex-direction: column; /* Stack elements vertically within each column */
+    padding: 5px; /* Optional padding for aesthetics */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Shadow for each column */
+}
+
+/* Specific widths for each column */
+.column1,
+.column2,
+.column3,
+.column4,
+.column5 {
+    width: 20%; /* Adjusted for better visibility */
+}
+.column1{
+    width: 5%;
+}
+.column2{
+    width: 65%;
+}
+.column3,
+.column4,
+.column5{
+    width: 5%;
+}
+
+/* Align checkboxes and labels */
+.input-row {
+    display: flex;
+    align-items: center; /* Center align items */
+    margin-bottom: 5px; /* Spacing between rows */
+}
+
+/* Style for labels */
+.column2 label {
+    margin-left: 5px; /* Space between checkbox and label */
+}
+
+/* Style for headers */
+.column1 h2, .column2 h3, .column3 h3, .column4 h3, .column5 h3 {
+    margin: 0; /* No space below headers */
+}
+
+/* Additional optional styles */
+.custom-column input,
+.custom-column select {
+    width: 100%; /* Make inputs and selects take full width of their column */
+    margin-top: 5px; /* Space above inputs */
+}
+
+                #textarea {
+        width: 100%; /* Full width of the parent container */
+        height: 250px; /* Set height between 200 and 300px */
+        resize: vertical; /* Allow vertical resizing */
+        padding: 10px; /* Inner padding for better text visibility */
+        border: 1px solid #ccc; /* Border styling */
+        border-radius: 5px; /* Rounded corners */
+        font-size: 16px; /* Font size for readability */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow for aesthetics */
+                }
+
+
+                .custom-label {
+        width: 60%; /* Set label width to 60% */
+        margin-right: 15px; /* Space between label and input */
+        font-size: 12px; /* Font size for labels */
+    }
+
+    .custom-input {
+        width: 40%; /* Set input width to 40% */
+        padding: 10px; /* Inner padding for better usability */
+        border: 1px solid #ccc; /* Border styling */
+        border-radius: 5px; /* Rounded corners */
+        font-size: 12px; /* Font size for inputs */
+    }
+    .date-input-row {
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Align items vertically */
+    margin-bottom: 10px; /* Space below the row */
+}
+
+.date-input-row label {
+    flex: 0 0 25%; /* Each label takes 25% of the width */
+    margin-right: 5px; /* Add space between label and input */
+}
+
+.date-input-row input {
+    flex: 0 0 25%; /* Each input takes 25% of the width */
+    margin-right: 5px; /* Add space between inputs */
+}
+
+/* Remove the margin from the last input to prevent overflow */
+.date-input-row input:last-child {
+    margin-right: 0; /* Remove margin from the last input */
+}
+.date-input-row {
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Align items vertically */
+    margin-bottom: 10px; /* Space below the row */
+}
+
+.date-input-row label {
+    flex: 0 0 25%; /* Each label takes 25% of the width */
+    margin-right: 5px; /* Add space between label and input */
+}
+
+.date-input-row input {
+    flex: 0 0 25%; /* Each input takes 25% of the width */
+    margin-right: 5px; /* Add space between inputs */
+}
+
+/* Remove the margin from the last input to prevent overflow */
+.date-input-row input:last-child {
+    margin-right: 0; /* Remove margin from the last input */
+}
+.custom-checkbox-section {
+    display: flex; /* Use flexbox for alignment */
+}
+
+/* Specific column styles */
+.custom-checkbox-section .custom-column {
+    flex: 1; /* Each column takes equal width */
+    padding: 0; /* Add some padding for spacing */
+}
+
+/* Align checkboxes and labels */
+.custom-checkbox-section .input-row {
+    display: flex; /* Use flexbox for input rows */
+    align-items: center; /* Center align items vertically */
+    margin-bottom: 5px; /* Space between rows */
+}
+
+/* Checkbox styles */
+.custom-checkbox-section input[type="checkbox"] {
+    margin-right: 10px; /* Space between checkbox and label */
+    transform: translateY(1px); /* Slight adjustment for visual alignment */
+}
+
+/* Label styles */
+.custom-checkbox-section label {
+    line-height: 1.5; /* Ensure consistent line height for labels */
+    margin: 0; /* Remove default margin */
+    font-size: 13px !important;
+
+}
+
+/* Input styles */
+
+/* Optional: Adding a consistent height for the input fields */
+.custom-checkbox-section input[type="text"],
+.custom-checkbox-section input[type="checkbox"] {
+    height: 11.5px; /* Set a consistent height for checkboxes and inputs */
+}
+.custom-checkbox-section .column1 h3{
+    margin-bottom: 17px;
+}
+.custom-checkbox-section .column2 h3{
+    margin-bottom: 10px;
+}
+.custom-checkbox-section .column3 h3{
+    margin-bottom: 5px;
+}
+.custom-checkbox-section .column4 h3{
+    margin-bottom: 5px;
+}
+.custom-checkbox-section .column5 h3{
+    margin-bottom: 5px;
+}
+.custom-checkbox-section input[type="text"] {
+    margin-left: 10px; /* Space between label and input */
+    padding: 0px; /* Padding inside text input */
+    flex: 1; /* Make inputs take full width */
+    height: 15px;
+}
+.column1{
+    max-width: 5%;
+}
+.column3,
+.column4,
+.column5{
+    max-width: 15%;
+}
     </style>
 </head>
 <body>
@@ -171,419 +620,510 @@ button {
         </div>
     
     </nav>
-    <div class="extra-roll-contracts" style="height: 10px; width: 100%; margin-bottom: 20px; text-align: center;padding: 10px 20px;">
+    <div class="extra-roll-contracts" style="height: 10px; width: 100%; margin-bottom: 2px;margin-top: 2px; text-align: center;padding: 5px 10px;">
         <h2>Договор</h2>
         <h2>№</h2>
 
-        <label for=""></label>
-        <label for="">Редакции</label>
-        <label for="">0</label>
-        <label for="">Продължения</label>
-        <label for="">0</label>
+        <label  style="margin-right: 80px;"></label>
+        <label >Редакции</label>
+        <label >0</label>
+        <label >Продължения</label>
+        <label >0</label>
 
-        <button>asd</button>
+        <button>Разгледай</button>
     </div>
     
 
     <div class="container">
         <div class="column">
-            <div class="section">
-                <div class="input-group">
-                    <!-- Row 1: Header + Button -->
-                    <div class="input-row1">
-                        <h2>Header Title</h2>
-                        <button type="button">Click Me</button>
+            <div class="column first-column">
+                <div class="section tenant-section">
+                    <div class="input-group">
+                        <div class="input-row1">
+                            <h2>Наемател</h2>
+                            <button type="button">Търси клиент</button>
+                        </div>
+                        
+                        <div class="input-row">
+                            <label for="input1-rentee">Име Презиме Фамилия</label>
+                            <input type="text" id="input1-rentee" class="wide-input"  style="margin-bottom:5px;" >
+                        </div>
+                        
+                        <div class="input-row">
+                            <label for="input2-rentee">ЕГН или дата на раждане</label>
+                            <input type="text" id="input2-rentee" class="wide-input" style="margin-bottom:5px;" >
+                        </div>
+                        
+                        <div class="input-row">
+                            <label for="input3-rentee">Телефон</label>
+                            <input type="text" id="input3-rentee" style="margin-bottom:5px;" class="wide-input" >
+                        </div>
+                        
+                        <div class="input-row">
+                            <label for="input4-rentee">Номер на л.к.</label>
+                            <input type="text" id="input4-rentee" class="wide-input" style="margin-bottom:5px;" >
+                        </div>
+            
+                        <div class="input-row">
+                            <label for="input5-rentee">Адрес по л.к.</label>
+                            <input type="text" id="input5-rentee" class="wide-input" >
+                        </div>
+                        <div class="input-row date-input-row" style="margin-top:5px;">
+                            <label for="input6-rentee">Издадена от</label>
+                            <input type="text" id="input6-rentee" style="max-width: 25%; margin-left: -25px;" >
+                            <label for="dateInput-rentee" style="margin-right: -10px;">Дата на издаване</label>
+                            <input type="date" style="max-width: 100px; margin-left: 20px;" id="dateInput-rentee">
+                        </div>
+
                     </div>
+
                     
-                    <!-- Row 2: Label 1 -->
-                    <div class="input-row">
-                        <label for="input1">Label 1:</label>
-                        <input type="text" id="input1" placeholder="Input 1">
-                    </div>
-            
-                    <!-- Row 3: Label 2 -->
-                    <div class="input-row">
-                        <label for="input2">Label 2:</label>
-                        <input type="text" id="input2" placeholder="Input 2">
-                    </div>
-            
-                    <!-- Row 4: Label 3 -->
-                    <div class="input-row">
-                        <label for="input3">Label 3:</label>
-                        <input type="text" id="input3" placeholder="Input 3">
-                    </div>
-            
-                    <!-- Row 5: Label 4 -->
-                    <div class="input-row">
-                        <label for="input4">Label 4:</label>
-                        <input type="text" id="input4" placeholder="Input 4">
-                    </div>
-                    <div class="input-row">
-                        <label for="input6">Label 5:</label>
-                        <input type="text" id="input6" placeholder="Input 5">
-                    </div>
-                    <!-- Row 6: Label + Text + Label + Date -->
-                    <div class="input-row">
-                        <label for="input5">Label 6:</label>
-                        <input type="text" id="input5" placeholder="Input 6">
-                        <label for="dateInput">Date:</label>
-                        <input type="date" id="dateInput">
-                    </div>
-            
-                    <!-- Row 7: Label 6 -->
-
-            
-                    <!-- Row 8: Label 7 -->
-                    <div class="input-row">
-                        <label for="input7">Label 7:</label>
-                        <input type="text" id="input7" placeholder="Input 7">
-                    </div>
-                </div>
-            </div>
-            
-            
-<div class="section">
-    <div class="input-group">
-        <!-- Row 1: Label 1 -->
-        <div class="input-row1">
-            <h2>Header Title</h2>
-            <button type="button">Click Me</button>
-        </div>
-
-        <!-- Row 2: Label 2 -->
-        <div class="input-row">
-            <label for="input2">Label 2:</label>
-            <input type="text" id="input2" placeholder="Input 2">
-        </div>
-
-        <!-- Row 3: Label 3 -->
-        <div class="input-row">
-            <label for="input3">Label 3:</label>
-            <input type="text" id="input3" placeholder="Input 3">
-        </div>
-        <div class="input-row">
-            <label for="input3">Label 3:</label>
-            <input type="text" id="input3" placeholder="Input 3">
-        </div>
-        <div class="input-row">
-            <label for="input3">Label 3:</label>
-            <input type="text" id="input3" placeholder="Input 3">
-        </div>
-        <div class="input-row">
-            <label for="input3">Label 3:</label>
-            <input type="text" id="input3" placeholder="Input 3">
-        </div>
-
-
-        <!-- Last Row: Label + Date + Label + Date -->
-        <div class="input-row">
-            <label for="dateInput1">Start Date:</label>
-            <input type="date" id="dateInput1">
-            <label for="dateInput2">End Date:</label>
-            <input type="date" id="dateInput2">
-        </div>
-    </div>
-
-
-            </div>
-            <div class="section">
-                <div class="input-group">
-                    <div class="input-row1">
-                        <h2>Header Title</h2>
-                        <button type="button">Click Me</button>
-                    </div>
-                    <div class="input-row">
-                        <label for="input2">Label 2:</label>
-                        <input type="text" id="input2" placeholder="Input 2">
-                    </div>
-                    <div class="input-row">
-                        <label for="input2">Label 2:</label>
-                        <input type="text" id="input2" placeholder="Input 2">
-                    </div>
-                    <div class="input-row">
-                        <label for="input2">Label 2:</label>
-                        <input type="text" id="input2" placeholder="Input 2">
-                    </div>
-                    <div class="input-row">
-                        <label for="input2">Label 2:</label>
-                        <input type="text" id="input2" placeholder="Input 2">
-                    </div>
-
-                    <div class="input-row">
-                        <label for="dateInput1">Start Date:</label>
-                        <input type="date" id="dateInput1">
-                        <label for="dateInput2">End Date:</label>
-                        <input type="date" id="dateInput2">
-                    </div>
+                    
                 </div>
                 
             </div>
-            <div class="section">
+            
+            
+            <div class="section driver-section">
                 <div class="input-group">
+                    <!-- Row 1: Header and Button -->
                     <div class="input-row1">
-                        <h2>Header Title</h2>
-                        <button type="button">Click Me</button>
+                        <h2>Шофьор</h2>
+                        <button type="button">Копирай от наемател</button>
+                    </div>
+            
+                    <!-- Row 2-5: Input Rows with Labels and Inputs -->
+                    <div class="input-row">
+                        <label for="input1-driver">Име Презиме Фамилия</label>
+                        <input type="text" id="input1-driver" class="wide-input">
                     </div>
                     <div class="input-row">
-                        <label for="input2">Label 1:</label>
-                        <input type="text" id="input2" placeholder="Input 2">
+                        <label for="input2-driver">ЕГН или дата на раждане</label>
+                        <input type="text" id="input2-driver" class="wide-input" >
                     </div>
                     <div class="input-row">
-                        <label for="input3">Label 2:</label>
-                        <input type="text" id="input3" placeholder="Input 3">
+                        <label for="input3-driver">Телефон</label>
+                        <input type="text" id="input3-driver"class="wide-input">
                     </div>
                     <div class="input-row">
-                        <label for="input4">Label 3:</label>
-                        <input type="text" id="input4" placeholder="Input 4">
+                        <label for="input4-driver">Св. за у-ние на МПС №</label>
+                        <input type="text" id="input4-driver" class="wide-input" >
                     </div>
                     <div class="input-row">
-                        <label for="input5">Label 4:</label>
-                        <input type="text" id="input5" placeholder="Input 5">
+                        <label for="input5-driver">Издадена от</label>
+                        <input type="text" id="input6-driver" class="wide-input" >
                     </div>
-                    <div class="input-row">
-                        <label for="input6">Label 5:</label>
-                        <input type="text" id="input6" placeholder="Input 6">
+            
+                    <!-- Last Row: Two Date Inputs with Labels -->
+                    <div class="input-row date-input-row" style="margin-top: 0px;">
+                        <label for="dateInput1-driver">Издадена на</label>
+                        <input type="date"  style="max-width: 100px;" id="dateInput1-driver" style="margin-left: -20px;" class="wide-input-date">
+                        <label for="dateInput2-driver" style="margin-right: -50px;">Валидна до</label>
+                        <input type="date" style="max-width: 100px; margin-left: 20px;"  id="dateInput2-driver" class="wide-input-date">
                     </div>
+                    
                 </div>
             </div>
             
+            <div class="section second-driver-section">
+                <div class="input-group">
+                    <div class="input-row1">
+                        <h2>Втори шофьор</h2>
+                        <button type="button">Търси клиент</button>
+                    </div>
+                    <div class="input-row">
+                        <label for="input1-driver2">Име Презиме Фамилия</label>
+                        <input type="text" id="input1-driver2" class="wide-input" >
+                    </div>
+                    <div class="input-row">
+                        <label for="input2-driver2">ЕГН</label>
+                        <input type="text" id="input2-driver2" class="wide-input" >
+                    </div>
+                    <div class="input-row">
+                        <label for="input3-driver2">Телефон</label>
+                        <input type="text" id="input3-driver2" class="wide-input" >
+                    </div>
+                    <div class="input-row">
+                        <label for="input4-driver2">Св. за у-ние на МПС №</label>
+                        <input type="text" id="input4-driver2" class="wide-input" >
+                    </div>
+                    <div class="input-row" style="margin-top: -5px;">
+                        <label for="input5-driver2">Издадена от</label>
+                        <input type="text" id="input5-driver2" class="wide-input">
+                    </div>
+                    <div class="input-row date-input-row" style="margin-top: 0px;;">
+                        <label for="dateInput1-driver2">Издадена на</label>
+                        <input type="date" id="dateInput1-driver2"  style="max-width: 100px;"  class="wide-input-date">
+                        <label for="dateInput2-driver2"  style="margin-right: -40px;">Валидна до</label>
+                        <input type="date" id="dateInput2-driver2"  style="max-width: 100px;"  class="wide-input-date">
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="section company-section">
+                <div class="input-group">
+                    <div class="input-row1">
+                        <h2>Фирма</h2>
+                        <button type="button">Търси фирма</button>
+                    </div>
+                    <div class="input-row">
+                        <label for="input1-firma">Име на фирма</label>
+                        <input type="text" id="input1-firma" class="wide-input" >
+                    </div>
+                    <div class="input-row" style="margin-top: -5px;">
+                        <label for="input2-firma">ЕИК/БУЛСТАТ</label>
+                        <input type="text" id="input2-firma" class="wide-input" >
+                    </div>
+                    <div class="input-row">
+                        <label for="input3-firma">Адрес</label>
+                        <input type="text" id="input3-firma" class="wide-input" >
+                    </div>
+                    <div class="input-row">
+                        <label for="input4-firma">Юридическо лице</label>
+                        <input type="text" id="input4-firma"class="wide-input">
+                    </div>
+                    <div class="input-row">
+                        <label for="input5-firma">Телефон</label>
+                        <input type="text" id="input5-firma" class="wide-input" >
+                    </div>
+                </div>
+                </div>
         </div>
         <div class="column">
-            <div class="section">
+            <div class="section reservation-section">
                 <div class="input-group">
                     <!-- Row 1: Header only -->
                     <div class="input-row">
-                        <h2>Header Title</h2>
+                        <h2>Данни за наема</h2>
                     </div>
-                    
-                    <!-- Row 2: Label + Dropdown + Label (Date) + Label (Hours) -->
                     <div class="input-row">
-                        <label for="dropdown1">Label 1:</label>
-                        <select id="dropdown1">
-                            <option value="">Select an option</option>
-                            <option value="option1">Option 1</option>
-                            <option value="option2">Option 2</option>
-                        </select>
-                        <label for="dateInput1">Date:</label>
-                        <input type="date" id="dateInput1">
-                        <label for="hoursInput1">Hours:</label>
-                        <input type="time" id="hoursInput1">
-                    </div>
-            
-                    <!-- Row 3: Same structure as Row 2 -->
-                    <div class="input-row">
-                        <label for="dropdown2">Label 2:</label>
-                        <select id="dropdown2">
-                            <option value="">Select an option</option>
-                            <option value="option1">Option 1</option>
-                            <option value="option2">Option 2</option>
-                        </select>
-                        <label for="dateInput2">Date:</label>
-                        <input type="date" id="dateInput2">
-                        <label for="hoursInput2">Hours:</label>
-                        <input type="time" id="hoursInput2">
-                    </div>
-            
-                    <!-- Row 4: Label + Dropdown + Label + Textfield -->
-                    <div class="input-row">
-                        <label for="dropdown3">Label 3:</label>
-                        <select id="dropdown3">
-                            <option value="">Select an option</option>
-                            <option value="option1">Option 1</option>
-                            <option value="option2">Option 2</option>
-                        </select>
-                        <label for="textfield">Label 4:</label>
-                        <input type="text" id="textfield" placeholder="Input Text">
-                    </div>
-            
-                    <!-- Row 5: Label + Dropdown (only) -->
-                    <div class="input-row">
-                        <label for="dropdown4">Label 5:</label>
-                        <select id="dropdown4">
-                            <option value="">Select an option</option>
-                            <option value="option1">Option 1</option>
-                            <option value="option2">Option 2</option>
+                        <label for="dropdown4-rent"   class="rental-label">Място на даване</label>
+                        <select id="dropdown4-rent"  style="max-width: 280px;">
+                            <option value="">Офис Пловдив, Константин Величков 6</option>
+                            <option value="option1">Офис София, Източна Тангента 161</option>
+                            <option value="option2">Офис София, Летище Терминал 1</option>
                         </select>
                     </div>
             
                     <!-- Row 6: Label + Dropdown (only) -->
                     <div class="input-row">
-                        <label for="dropdown5">Label 6:</label>
-                        <select id="dropdown5">
-                            <option value="">Select an option</option>
+                        <label for="dropdown5-rent" class="rental-label">Място на връщане</label>
+                        <select id="dropdown5-rent" style="max-width: 280px;">
+                            <option value="">Офис Пловдив, Константин Величков 6</option>
                             <option value="option1">Option 1</option>
                             <option value="option2">Option 2</option>
                         </select>
                     </div>
+                    
+                    <!-- Row 2: Label + Dropdown + Label (Date) + Label (Hours) -->
+                    <div class="input-row">
+                        <label class="rental-label">Начална дата/час</label>
+                        <div class="date-input-group">
+                            <label for="dateInput1-rent" class="rental-label">Дата</label>
+                            <input type="date" style="margin-left: -20px; max-width: 100px;"  id="dateInput1-rent">
+                            <label for="hoursInput1-rent" class="rental-label">Час</label>
+                            <input type="time" style="margin-left: -20px;max-width: 100px;"  id="hoursInput1-rent">
+                        </div>
+                    </div>
+            
+                    <!-- Row 3: Same structure as Row 2 -->
+                    <div class="input-row">
+                        <label  class="rental-label">Крайна дата/час</label>
+                        <div class="date-input-group">
+                            <label for="dateInput2-rent2" class="rental-label">Дата</label>
+                            <input type="date" style="margin-left: -20px;max-width: 100px;"  id="dateInput2-rent2">
+                            <label for="hoursInput2-rent2" class="rental-label">Час</label>
+                            <input type="time" style="margin-left: -20px;max-width: 100px;"  id="hoursInput2-rent2">
+                        </div>
+                    </div>
+            
+                    <!-- Row 4: Label + Dropdown + Label + Textfield -->
+                    <div class="input-row">
+                        <label for="dropdown3-rent" class="rental-label">Направи</label>
+                        <select id="dropdown3-rent" style="max-width: 150px;">
+                            <option value="">Договор</option>
+                            <option value="option1">Option 1</option>
+                            <option value="option2">Option 2</option>
+                        </select>
+                        <label for="textfield-rent" style="margin-left: 20px"  class="rental-label">Брой дни</label>
+                        <input type="text" id="textfield-rent" style="margin-left: -80px; max-width: 40px;">
+                    </div>
                 </div>
             </div>
             
-            <div class="section">
+            
+            <div class="section vehicle-section">
                 <div class="input-group">
                     <!-- Row 1: Header and Button -->
-                    <div class="input-row1">
-                        <h2>Header Title</h2>
-                        <button type="button">Click Me</button>
+                    <div class="input-row1" >
+                        <h2>Автомобил</h2>
+                        <button type="button">Търси</button>
                     </div>
-                    
+            
                     <!-- Row 2: Label + Text + Label + Text -->
-                    <div class="input-row">
-                        <label for="input1">Label 1:</label>
-                        <input type="text" id="input1" placeholder="Input 1">
-                        <label for="input2">Label 2:</label>
-                        <input type="text" id="input2" placeholder="Input 2">
+                    <div class="input-row" style="margin-top: 10px;">
+                        <label for="input1-vehicle" >Клас</label>
+                        <input type="text" style="margin-left: -40px; margin-right: 20px; max-width: 200px;"  id="input1-vehicle" >
+                        <label for="input2-vehicle">Марка</label>
+                        <input type="text" style="margin-left: -40px; margin-right: 20px; max-width: 200px;"  id="input2-vehicle" >
                     </div>
             
                     <!-- Row 3: Label + Text + Label + Text -->
                     <div class="input-row">
-                        <label for="input3">Label 3:</label>
-                        <input type="text" id="input3" placeholder="Input 3">
-                        <label for="input4">Label 4:</label>
-                        <input type="text" id="input4" placeholder="Input 4">
+                        <label for="input3-vehicle">Модел</label>
+                        <input type="text" id="input3-vehicle" style="margin-left: -40px; margin-right: 20px; max-width: 200px;" >
+                        <label for="input4-vehicle">Рег. №</label>
+                        <input type="text" id="input4-vehicle" style="margin-left: -40px; margin-right: 20px; max-width: 200px;" >
                     </div>
             
                     <!-- Row 4: Label + Text + Label + Text -->
                     <div class="input-row">
-                        <label for="input5">Label 5:</label>
-                        <input type="text" id="input5" placeholder="Input 5">
-                        <label for="input6">Label 6:</label>
-                        <input type="text" id="input6" placeholder="Input 6">
+                        <label for="input5-vehicle">Цена</label>
+                        <input type="text" id="input5-vehicle" style="margin-left: -40px; margin-right: 20px; max-width: 200px;">
+                        <label for="input6-vehicle">Депозит</label>
+                        <input type="text" id="input6-vehicle" style="margin-left: -40px; margin-right: 20px; max-width: 200px;" >
                     </div>
                 </div>
             </div>
             
             
-            <div class="section">
+            
+            <div class="section reservation-section">
                 <div class="input-group">
-                    <!-- Row 1: Label + Text + Label + Dropdown -->
-                    <div class="input-row">
-                        <label for="input1">Label 1:</label>
-                        <input type="text" id="input1" placeholder="Input 1">
-                        <label for="dropdown1">Label 2:</label>
-                        <select id="dropdown1">
-                            <option value="">Select an option</option>
-                            <option value="option1">Option 1</option>
-                            <option value="option2">Option 2</option>
-                        </select>
-                    </div>
-            
-                    <!-- Row 2: Label + Dropdown -->
-                    <div class="input-row">
-                        <label for="dropdown2">Label 3:</label>
-                        <select id="dropdown2">
-                            <option value="">Select an option</option>
-                            <option value="option1">Option 1</option>
-                            <option value="option2">Option 2</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-            
-            
-            <div class="section">
-                <div class="input-group">
-                    <!-- Row 1: Three Header Labels -->
-                    <div class="input-row">
-                        <h3>Header 1</h3>
-                        <h3>Header 2</h3>
-                        <h3>Header 3</h3>
+                    <!-- Row 1: Label + Text -->
+                    <div class="input-row" style="margin-bottom: 10px;">
+                        <label for="input1-reservation" style="margin-right: 60px;">Код на резервация</label>
+                        <input type="text" id="input1-reservation" style="max-width: 200px;" >
                     </div>
                     
-                    <!-- Row 2: Checkbox, Label, Text -->
-                    <div class="input-row">
-                        <input type="checkbox" id="check1">
-                        <label for="input1">Label 1:</label>
-                        <input type="text" id="input1" placeholder="Input 1">
+                    <!-- Row 2: Label + Dropdown -->
+                    <div class="input-row" style="margin-bottom: 10px;">
+                        <label for="dropdown2-reservation" style="margin-right: 50px;" >Сайт на резервация</label>
+                        <select id="dropdown2-reservation" style="max-width: 200px;">
+                            <option value="">Select an option</option>
+                            <option value="option1">Option 1</option>
+                            <option value="option2">Option 2</option>
+                        </select>
                     </div>
-            
-                    <!-- Row 3: Checkbox, Label, Text -->
-                    <div class="input-row">
-                        <input type="checkbox" id="check2">
-                        <label for="input2">Label 2:</label>
-                        <input type="text" id="input2" placeholder="Input 2">
-                    </div>
-            
-                    <!-- Row 4: Checkbox, Label, Text, Text -->
-                    <div class="input-row">
-                        <input type="checkbox" id="check3">
-                        <label for="input3">Label 3:</label>
-                        <input type="text" id="input3" placeholder="Input 3">
-                        <input type="text" id="input3b" placeholder="Input 3B">
-                    </div>
-            
-                    <!-- Row 5: Checkbox, Label, Text, Text -->
-                    <div class="input-row">
-                        <input type="checkbox" id="check4">
-                        <label for="input4">Label 4:</label>
-                        <input type="text" id="input4" placeholder="Input 4">
-                        <input type="text" id="input4b" placeholder="Input 4B">
-                    </div>
-            
-                    <!-- Row 6: Checkbox, Label, Text, Text -->
-                    <div class="input-row">
-                        <input type="checkbox" id="check5">
-                        <label for="input5">Label 5:</label>
-                        <input type="text" id="input5" placeholder="Input 5">
-                        <input type="text" id="input5b" placeholder="Input 5B">
-                    </div>
-            
-                    <!-- Row 7: Checkbox, Label, Text, Text -->
-                    <div class="input-row">
-                        <input type="checkbox" id="check6">
-                        <label for="input6">Label 6:</label>
-                        <input type="text" id="input6" placeholder="Input 6">
-                        <input type="text" id="input6b" placeholder="Input 6B">
-                    </div>
-            
-                    <!-- Row 8: Checkbox, Label, Text, Text -->
-                    <div class="input-row">
-                        <input type="checkbox" id="check7">
-                        <label for="input7">Label 7:</label>
-                        <input type="text" id="input7" placeholder="Input 7">
-                        <input type="text" id="input7b" placeholder="Input 7B">
-                    </div>
-            
-                    <!-- Row 9: Checkbox, Label, Text, Text -->
-                    <div class="input-row">
-                        <input type="checkbox" id="check8">
-                        <label for="input8">Label 8:</label>
-                        <input type="text" id="input8" placeholder="Input 8">
-                        <input type="text" id="input8b" placeholder="Input 8B">
-                    </div>
-            
-                    <!-- Row 10: Checkbox, Label, Text, Text -->
-                    <div class="input-row">
-                        <input type="checkbox" id="check9">
-                        <label for="input9">Label 9:</label>
-                        <input type="text" id="input9" placeholder="Input 9">
-                        <input type="text" id="input9b" placeholder="Input 9B">
-                    </div>
-            
-                    <!-- Row 11: Checkbox, Label, Text, Text -->
-                    <div class="input-row">
-                        <input type="checkbox" id="check10">
-                        <label for="input10">Label 10:</label>
-                        <input type="text" id="input10" placeholder="Input 10">
-                        <input type="text" id="input10b" placeholder="Input 10B">
-                    </div>
-            
-                    <!-- Row 12: Checkbox, Label, Text, Text -->
-                    <div class="input-row">
-                        <input type="checkbox" id="check11">
-                        <label for="input11">Label 11:</label>
-                        <input type="text" id="input11" placeholder="Input 11">
-                        <input type="text" id="input11b" placeholder="Input 11B">
-                    </div>
-            
-                    <!-- Row 13: Checkbox, Label, Text, Text -->
-                    <div class="input-row">
-                        <input type="checkbox" id="check12">
-                        <label for="input12">Label 12:</label>
-                        <input type="text" id="input12" placeholder="Input 12">
-                        <input type="text" id="input12b" placeholder="Input 12B">
+                    
+                    <!-- Row 3: Label + Dropdown -->
+                    <div class="input-row" style="margin-bottom: 10px;">
+                        <label for="dropdown1-reservation" style="margin-right: 120px;">Отстъпка</label>
+                        <select id="dropdown1-reservation" style="max-width: 200px;">
+                            <option value="">0%</option>
+                            <option value="option1">Option 1</option>
+                            <option value="option2">Option 2</option>
+                        </select>
                     </div>
                 </div>
             </div>
+            
+            
+            <div class="custom-section section custom-checkbox-section" style="padding: 5px 4px;"> <!-- Add custom class here -->
+                <div class="custom-column column1">
+                    <h3 style="margin-top: 10px;"></h3>
+                    <div class="input-row">
+                        <input type="checkbox" id="check1">
+                    </div>
+                    <div class="input-row">
+                        <input type="checkbox" id="check2">
+                    </div>
+                    <div class="input-row">
+                        <input type="checkbox" id="check3">
+                    </div>
+                    <div class="input-row">
+                        <input type="checkbox" id="check4">
+                    </div>
+                    <div class="input-row">
+                        <input type="checkbox" id="check5">
+                    </div>
+                    <div class="input-row">
+                        <input type="checkbox" id="check6">
+                    </div>
+                    <div class="input-row">
+                        <input type="checkbox" id="check7">
+                    </div>
+                    <div class="input-row">
+                        <input type="checkbox" id="check8">
+                    </div>
+                    <div class="input-row">
+                        <input type="checkbox" id="check9">
+                    </div>
+                    <div class="input-row">
+                        <input type="checkbox" id="check10">
+                    </div>
+                    <div class="input-row">
+                        <input type="checkbox" id="check11">
+                    </div>
+                    <div class="input-row">
+                        <input type="checkbox" id="check12">
+                    </div>
+                </div>
+            
+                <div class="custom-column column2">
+                    <h3>Екстри</h3>
+
+                    <div class="input-row">
+                        <label>Застаховка Стъкла,Гуми,Джанти</label>
+                    </div>
+                    <div class="input-row">
+                        <label>ВИП Застраховка</label>
+                    </div>
+                    <div class="input-row">
+                        <label >Детска седалка</label>
+                    </div>
+                    <div class="input-row">
+                        <label >Бустер</label>
+                    </div>
+                    <div class="input-row">
+                        <label >Бебешко столче</label>
+                    </div>
+                    <div class="input-row">
+                        <label >Доп. шофьор</label>
+                    </div>
+                    <div class="input-row">
+                        <label>Wi-Fi HotSpot</label>
+                    </div>
+                    <div class="input-row">
+                        <label >GPS навигация</label>
+                    </div>
+                    <div class="input-row">
+                        <label >Пътуване в Гърция</label>
+                    </div>
+                    <div class="input-row">
+                        <label >Пътуване в Румъния</label>
+                    </div>
+                    <div class="input-row">
+                        <label >Пътуване в Сърбия</label>
+                    </div>
+                    <div class="input-row">
+                        <label >Пътуване в Северна Македония</label>
+                    </div>
+                </div>
+            
+                <div class="custom-column column3">
+                    <h3>Брой</h3>
+                    <div class="input-row">
+                        <input type="text" id="input2">
+                    </div>
+                    <div class="input-row">
+                        <input type="text" id="input3" >
+                    </div>
+                    <div class="input-row">
+                        <input type="text" id="input4" >
+                    </div>
+                    <div class="input-row">
+                        <input type="text" id="input5">
+                    </div>
+                    <div class="input-row">
+                        <input type="text" id="input6">
+                    </div>
+                    <div class="input-row">
+                        <input type="text" id="input7" >
+                    </div>
+                    <div class="input-row">
+                        <input type="text" id="input8" >
+                    </div>
+                    <div class="input-row">
+                        <input type="text" id="input9" >
+                    </div>
+                    <div class="input-row">
+                        <input type="text" id="input10" >
+                    </div>
+                    <div class="input-row">
+                        <input type="text" id="input11" >
+                    </div>
+                    <div class="input-row">
+                        <input type="text" id="input12" >
+                    </div>
+                    <div class="input-row">
+                        <input type="text" id="input13" >
+                    </div>
+                </div>
+            
+                <div class="custom-column column4">
+                    <h3>Цена</h3>
+                    <div class="input-row">
+                        <input type="text" id="input1b">
+                    </div>
+                    <div class="input-row">
+                        <input type="text" id="input2b" >
+                    </div>
+                    <div class="input-row">
+                        <input type="text" id="input3b" >
+                    </div>
+                    <div class="input-row">
+                        <input type="text" id="input4b" >
+                    </div>
+                    <div class="input-row">
+                        <input type="text" id="input5b" >
+                    </div>
+                    <div class="input-row">
+                        <input type="text" id="input6b">
+                    </div>
+                    <div class="input-row">
+                        <input type="text" id="input7b">
+                    </div>
+                    <div class="input-row">
+                        <input type="text" id="input8b" >
+                    </div>
+                    <div class="input-row">
+                        <input type="text" id="input9b" >
+                    </div>
+                    <div class="input-row">
+                        <input type="text" id="input10b">
+                    </div>
+                    <div class="input-row">
+                        <input type="text" id="input11b" >
+                    </div>
+                    <div class="input-row">
+                        <input type="text" id="input12b" >
+                    </div>
+                </div>
+            
+                <div class="custom-column column5">
+                    <h3>Депозит</h3>
+                    <div class="input-row">
+                        <input type="text" id="input1c">
+                    </div>
+                    <div class="input-row">
+                        <input type="text" id="input2c">
+                    </div>
+                    <div class="input-row">
+                        <input type="text" id="input3c" >
+                    </div>
+                    <div class="input-row">
+                        <input type="text" id="input4c" >
+                    </div>
+                    <div class="input-row">
+                        <input type="text" id="input5c" >
+                    </div>
+                    <div class="input-row">
+                        <input type="text" id="input6c" >
+                    </div>
+                    <div class="input-row">
+                        <input type="text" id="input7c" >
+                    </div>
+                    <div class="input-row">
+                        <input type="text" id="input8c" >
+                    </div>
+                    <div class="input-row">
+                        <input type="text" id="input9c">
+                    </div>
+                    <div class="input-row">
+                        <input type="text" id="input10c" >
+                    </div>
+                    <div class="input-row">
+                        <input type="text" id="input11c" >
+                    </div>
+                    <div class="input-row">
+                        <input type="text" id="input12c" >
+                    </div>
+                </div>
+            </div>
+            
+
             
         </div>
         <div class="column">
@@ -591,61 +1131,107 @@ button {
                 <div class="input-group">
                     <!-- Row 1: Header -->
                     <div class="input-row">
-                        <h2>Header Title</h2>
+                        <h2>Бележки</h2>
                     </div>
             
                     <!-- Row 2: Text Area -->
                     <div class="input-row">
-                        <label for="textarea">Description:</label>
-                        <textarea id="textarea" placeholder="Enter your text here..." rows="4" cols="50"></textarea>
+                        <textarea id="textarea"  rows="10"></textarea>
                     </div>
                 </div>
             </div>
             
             
-            <div class="section">
-                <div class="input-group">
-                    <div class="input-row">
-                        <h2>Header Title</h2>
+            
+            <div class="payment-section" id="payment-section">
+                <div class="input-row">
+                    <h2>Плащане</h2>
+                </div>
+            
+                <div class="input-row">
+                    <div class="label-column" id="label-column">
+                        <label class="custom-label" for="input2-payments">Цена на ден</label>
+                        <label class="custom-label" for="input3-payments">Обща цена на наема</label>
+                        <label class="custom-label" for="input4-payments">Обща цена на екстри</label>
+                        <label class="custom-label" for="input5-payments">Доп. такси</label>
+                        <label class="custom-label" for="input6-payments">Крайна сума</label>
+                        <label class="custom-label" for="input7-payments">Дължима сума</label>
                     </div>
             
-                    <div class="input-row">
-                        <label for="input2">Label 2:</label>
-                        <input type="text" id="input2" placeholder="Input 2">
-                    </div>
-                    <div class="input-row">
-                        <label for="input3">Label 3:</label>
-                        <input type="text" id="input3" placeholder="Input 3">
-                    </div>
-                    <div class="input-row">
-                        <label for="input4">Label 4:</label>
-                        <input type="text" id="input4" placeholder="Input 4">
-                    </div>
-                    <div class="input-row">
-                        <label for="input5">Label 5:</label>
-                        <input type="text" id="input5" placeholder="Input 5">
-                    </div>
-                    <div class="input-row">
-                        <label for="input6">Label 6:</label>
-                        <input type="text" id="input6" placeholder="Input 6">
-                    </div>
-                    <div class="input-row">
-                        <label for="input6">Label 7:</label>
-                        <input type="text" id="input7" placeholder="Input 7">
+                    <div class="input-column" id="input-column">
+                        <input class="custom-input" type="text" id="input2-payments" >
+                        <input class="custom-input" type="text" id="input3-payments" >
+                        <input class="custom-input" type="text" id="input4-payments" >
+                        <input class="custom-input" type="text" id="input5-payments" >
+                        <input class="custom-input" type="text" id="input6-payments" >
+                        <input class="custom-input" type="text" id="input7-payments" >
                     </div>
                 </div>
             </div>
             
-            <div class="section">Section 3C</div>
-            <div class="section">Section 3D</div>
+            
+            <style>
+                #payment-section {
+                    display: block; /* Make it a block for proper layout */
+                    background-color: #f9f9f9; /* Light background color */
+                    padding: 20px; /* Padding for aesthetics */
+                    border-radius: 0px; /* Rounded corners */
+                    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+                    line-height: 1.5;
+                }
+            
+                .input-row {
+                    display: flex; /* Use flexbox for the two-column layout */
+                    align-items: center; /* Align items vertically centered */
+                    margin-bottom: 0; /* Space between input rows */
+                    
+                }
+                #payment-section .input-row{
+                    display: flex; /* Use flexbox for the two-column layout */
+                    align-items: center; /* Align items vertically centered */
+                    margin-bottom: 5px; /* Space between input rows */
+                }
+                #label-column {
+                    width: 60%; /* Set the label column to 60% width */
+                }
+            
+                #input-column {
+                    width: 40%; /* Set the input column to 40% width */
+                }
+            
+                .custom-label {
+                    display: block; /* Labels take the full width of the column */
+                    width: 90%; /* Labels take 90% of their parent column's width */
+                    margin-bottom: 10px; /* Space between labels */
+                    text-align: left; /* Align text to the left */
+                    font-size: 14px !important;
+
+                }
+            
+                .custom-input {
+                    display: block; /* Inputs take the full width of the column */
+                    width: 80%; /* Inputs take 80% of their parent column's width */
+                    padding: 2px; /* Inner padding for better usability */
+                    border: 1px solid #ccc; /* Border styling */
+                    margin-bottom: 10px; /* Space between labels */
+
+                    border-radius: 5px; /* Rounded corners */
+                    font-size: 14px; /* Font size for inputs */
+                }
+            </style>
+            
+            
+
         </div>
-        <div class="column">
-            <a href="#" class="button">Button 1</a>
-            <a href="#" class="button">Button 2</a>
-            <a href="#" class="button">Button 3</a>
-            <a href="#" class="button">Button 4</a>
-            <a href="#" class="button">Button 5</a>
-            <a href="#" class="button">Button 6</a>
+        <div class="column" style="max-width: 10%;">
+            <a href="#" class="button">Нов договор</a>
+            <a href="#" class="button">Запази</a>
+            <a href="#" class="button">Редактирай</a>
+            <a href="#" class="button">Изтрий</a>
+            <a href="#" class="button">Продължи</a>
+            <a href="#" class="button">Търсене</a>
+            <a href="#" class="button">Принтирай</a>
+
         </div>
     </div>
 </body>

@@ -6,67 +6,279 @@
     <title>Document</title>
     <style>
         .menu-bar {
-    display: flex;
-    background-color: #333; /* Background color for the menu */
-}
+            display: flex;
+            background-color: #333;
+            margin-bottom: 20px;
+            position: relative;
+            width: 100%;
+        }
 
-.dropdown {
-    position: relative;
-}
+        .dropdown {
+            position: relative;
+        }
 
-.dropbtn {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none; /* Remove underline */
-}
+        .dropbtn {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
 
-.dropbtn:hover {
-    background-color: #575757; /* Background color on hover */
-}
+        .dropbtn:hover {
+            background-color: #575757;
+        }
 
-/* Optional: style for the dropdown content if you decide to add it later */
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
+        
+        .menu-bar2 {
+            display: flex;
+            background-color: #333;
+            margin-bottom: 20px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            font-size: 16px !important;
+        }
 
-.dropdown:hover .dropdown-content {
-    display: block; /* Show dropdown on hover */
-}
+        .dropdown2 {
+            position: relative;
+            font-size: 16px !important;
 
+        }
+
+        .dropbtn2 {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 10px 20px !important;
+            text-decoration: none;
+        }
+
+        .dropbtn2:hover {
+            background-color: #575757;
+        }
+        
+        .tab {
+            flex: 1;
+            text-align: center;
+            padding: 14px 16px;
+            color: white;
+            cursor: pointer;
+            background-color: #333;
+        }
+
+        .tab:hover {
+            background-color: #575757;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 20px;
+            border: 1px solid #ccc;
+            margin-top: -1px;
+        }
+
+        .active {
+            display: block;
+        }
+
+        .table-container {
+            margin-top: 20px;
+        }
+
+        .filter-row {
+            margin-bottom: 20px;
+        }
+
+        .filter-row input {
+            margin-right: 10px;
+            padding: 8px;
+            border: 1px solid #ccc;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
     </style>
 </head>
 <body>
-    <div class="menu-bar">
-        <div class="dropdown">
-            <a class="dropbtn" href="new-index.html">Начало</a>
+    <div class="menu-bar2">
+        <div class="dropdown2">
+            <a class="dropbtn2" href="new-index.html">Начало</a>
         </div>
-        <div class="dropdown">
-            <a class="dropbtn" href="clients.html">Клиенти</a>
+        <div class="dropdown2">
+            <a class="dropbtn2" href="clients.html">Клиенти</a>
         </div>
-        
-        <div class="dropdown">
-            <a class="dropbtn" href="cars.html">Автомобили</a>
+        <div class="dropdown2">
+            <a class="dropbtn2" href="cars.html">Автомобили</a>
         </div>
-        
-        <div class="dropdown">
-            <a class="dropbtn" href="contracts.html">Договори</a>
+        <div class="dropdown2">
+            <a class="dropbtn2" href="contracts.html">Договори</a>
         </div>
-        
-        <div class="dropdown">
-            <a class="dropbtn" href="spravki.html">Справки</a>
+        <div class="dropdown2">
+            <a class="dropbtn2" href="spravki.html">Справки</a>
         </div>
-        
-        <div class="dropdown">
-            <a class="dropbtn" href="drugo.html">Друго</a>
+        <div class="dropdown2">
+            <a class="dropbtn2" href="drugo.html">Друго</a>
         </div>
     </div>
-    
+
+    <div class="menu-bar" style="margin-top: 100px;">
+        <div class="tab" onclick="showTab('view')">Справка Автомобили</div>
+        <div class="tab" onclick="showTab('reorder')">Справка Клиенти</div>
+        <div class="tab" onclick="showTab('search')">Справка Договори</div>
+        <div class="tab" onclick="showTab('settings')">Справка Локации</div>
+    </div>
+
+    <div id="view" class="tab-content active">
+        <div class="table-container">
+            <h2>Автомобили</h2>
+            <div class="filter-row">
+                <input type="text" placeholder="Филтър по клас" id="classFilter">
+                <input type="text" placeholder="Филтър по марка" id="brandFilter">
+                <input type="text" placeholder="Филтър по модел" id="modelFilter">
+                <input type="date" name="carDate1" id="carDate1">
+                <input type="date" name="carDate2" id="carDate2">
+                <button onclick="filterTable()">Приложи филтри</button>
+            </div>
+            <table id="clientTable">
+                <thead>
+                    <tr>
+                        <th>Клас</th>
+                        <th>Марка</th>
+                        <th>Модел</th>
+                        <th>Рег. №</th>
+                        <th>Гориво</th>
+                        <th>Скорости</th>
+                    </tr>
+                </thead>
+                <tbody id="client-data">
+                    <!-- Data will be populated here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="reorder" class="tab-content">
+        <div class="table-container">
+            <h2>Клиенти</h2>
+            <div class="filter-row">
+                <input type="text" placeholder="Филтър по име" id="nameFilter">
+                <input type="text" placeholder="Филтър по ЕГН" id="egnFilter">
+                <input type="text" placeholder="Филтър по телефон" id="phoneFilter">
+                <input type="date" name="clientDate1" id="clientDate1">
+                <input type="date" name="clientDate2" id="clientDate2">
+
+                <button onclick="filterClients()">Приложи филтри</button>
+            </div>
+            <table id="clientTable">
+                <thead>
+                    <tr>
+                        <th>Имена</th>
+                        <th>ЕГН</th>
+                        <th>Телефон</th>
+                        <th>Адрес</th>
+                    </tr>
+                </thead>
+                <tbody id="client-data">
+                    <!-- Data will be populated here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="search" class="tab-content">
+        <div class="table-container">
+            <h2>Договори</h2>
+            <div class="filter-row">
+                <input type="text" placeholder="Филтър по шофьор" id="driverFilter">
+                <input type="text" placeholder="ЕГН" id="egnFilter">
+                <input type="text" placeholder="Телефон" id="phoneFilter">
+                <input type="text" placeholder="Резервация" id="contractTypeFilter">
+                <input type="date" placeholder="Дата на даване" id="dateGivenFilter">
+                <input type="date" placeholder="Дата на връщане" id="dateReturnedFilter">
+                <button onclick="filterContracts()">Приложи филтри</button>
+            </div>
+            <table class="selectable-table" id="tableContracts" style="font-size: 14px;">
+                <thead>
+                    <tr>
+                        <th>Шофьор</th>
+                        <th>Дата на даване</th>
+                        <th>Час на даване</th>
+                        <th>Място на даване</th>
+                        <th>Дата на връщане</th>
+                        <th>Час на връщане</th>
+                        <th>Място на връщане</th>
+                        <th>Телефон</th>
+                        <th>Вид на договор</th>
+                    </tr>
+                </thead>
+                <tbody id="contract-data">
+                    <!-- Data will be populated here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="settings" class="tab-content">
+        <div class="table-container">
+            <h2>Периоди на приходи</h2>
+            <div class="filter-row">
+                <input type="date" placeholder="Начална дата" id="startDate">
+                <input type="date" placeholder="Крайна дата" id="endDate">
+                <button onclick="filterEarnings()">Приложи филтри</button>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Локация</th>
+                        <th>Договори</th>
+                        <th>Сума</th>
+                    </tr>
+                </thead>
+                <tbody id="earnings-data">
+                    <!-- Data will be populated here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        function showTab(tabName) {
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.getElementById(tabName).classList.add('active');
+        }
+
+        function filterTable() {
+            // Logic to filter the "Автомобили" table based on input values
+        }
+
+        function filterClients() {
+            // Logic to filter the "Клиенти" table based on input values
+        }
+
+        function filterContracts() {
+            // Logic to filter the "Договори" table based on input values
+        }
+
+        function filterEarnings() {
+            // Logic to filter the earnings based on date range
+        }
+    </script>
 </body>
 </html>
