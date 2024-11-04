@@ -153,7 +153,7 @@
                 <input type="date" name="carDate2" id="carDate2">
                 <button onclick="filterTable()">Приложи филтри</button>
             </div>
-            <table id="clientTable">
+            <table id="carTable">
                 <thead>
                     <tr>
                         <th>Клас</th>
@@ -162,15 +162,61 @@
                         <th>Рег. №</th>
                         <th>Гориво</th>
                         <th>Скорости</th>
+                        <th>Гражданска</th>
+                        <th>Каско</th>
+                        <th>Винетка</th>
+                        <th>Преглед</th>
+                        <th>Данък</th>
+                        <th>В сервиз</th>
+
                     </tr>
                 </thead>
-                <tbody id="client-data">
+                <tbody id="car-data">
                     <!-- Data will be populated here -->
                 </tbody>
             </table>
         </div>
     </div>
-
+    <script>
+        // Function to fetch cars data and populate the table
+        async function fetchCarsData() {
+            try {
+                const response = await fetch('/api/cars');
+                const cars = await response.json();
+    
+                const tableBody = document.getElementById('car-data');
+                tableBody.innerHTML = ''; // Clear any existing rows
+    
+                // Populate the table with data
+                cars.forEach(car => {
+                    const row = document.createElement('tr');
+    
+                    row.innerHTML = `
+                        <td>${car.classes}</td>
+                        <td>${car.Marka}</td>
+                        <td>${car.model}</td>
+                        <td>${car.Reg_Num}</td>
+                        <td>${car.fuels}</td>
+                        <td>${car.gears}</td>
+                        <td>${car.Grajdanska}</td>
+                        <td>${car.Kasko}</td>
+                        <td>${car.Vinetka}</td>
+                        <td>${car.Pregled}</td>
+                        <td>${car.Danak}</td>
+                        <td>${car.Serviz_Data}</td>
+                    `;
+    
+                    tableBody.appendChild(row);
+                });
+            } catch (error) {
+                console.error('Error fetching cars data:', error);
+            }
+        }
+    
+        // Call the function when the page loads
+        document.addEventListener('DOMContentLoaded', fetchCarsData);
+    </script>
+    
     <div id="reorder" class="tab-content">
         <div class="table-container">
             <h2>Клиенти</h2>
@@ -231,7 +277,43 @@
             </table>
         </div>
     </div>
-
+    <script>
+        // Function to fetch cars data and populate the table
+        async function fetchContractsData() {
+            try {
+                const response = await fetch('/api/contracts');
+                const contracts = await response.json();
+    
+                const tableBody = document.getElementById('contract-data');
+                tableBody.innerHTML = ''; // Clear any existing rows
+    
+                // Populate the table with data
+                contracts.forEach(contract => {
+                    const row = document.createElement('tr');
+    
+                    row.innerHTML = `
+                        <td>${contract.ime_prez_familiq}</td>
+                        <td>${contract.data_davane}</td>
+                        <td>${contract.chas_davane}</td>
+                        <td>${contract.mqsto_davane}</td>
+                        <td>${contract.data_return}</td>
+                        <td>${contract.chas_return}</td>
+                        <td>${contract.mqsto_return}</td>
+                        <td>${contract.telefoni}</td>
+                        <td>${contract.vid_dogovor}</td>
+                    `;
+    
+                    tableBody.appendChild(row);
+                });
+            } catch (error) {
+                console.error('Error fetching cars data:', error);
+            }
+        }
+    
+        // Call the function when the page loads
+        document.addEventListener('DOMContentLoaded', fetchContractsData);
+    </script>
+                   
     <div id="settings" class="tab-content">
         <div class="table-container">
             <h2>Периоди на приходи</h2>

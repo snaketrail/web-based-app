@@ -40,7 +40,7 @@
             display: flex;
             gap: 10px;
             margin-top: 60px; /* Added margin to space it below the menu */
-            height: 92vh;
+            height: 91vh;
         }
 
         .form-container {
@@ -50,6 +50,7 @@
             border-radius: 5px;
             background-color: #fff;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding-bottom: 0;
         }
 
         .table-container {
@@ -59,6 +60,7 @@
             border-radius: 5px;
             background-color: #fff;
             overflow: auto;
+            padding-bottom: 0;
         }
 
         .button-container {
@@ -70,6 +72,7 @@
             border: 1px solid #ddd;
             align-items: center;
             padding: 10px;
+            padding-bottom: 0;
         }
 
         button {
@@ -109,7 +112,7 @@
         /* General Form Container Styles */
 .form-container {
     width: 100%;
-    max-width: 600px;
+    min-width: 550px;
     margin: 5px auto;
     padding: 5px;
     background-color: #f9f9f9;
@@ -280,7 +283,7 @@ button:hover {
 }
 
 .form-group label {
-    font-size: 14px;
+    font-size: 13px !important;
     color: black;
     margin-bottom: 3px;
 }
@@ -307,8 +310,27 @@ button:hover {
 #searchButton:hover {
     background-color: #218838;
 }
+#clientTable{
+    overflow: auto;
+}
+.custom-select {
+        width: 100%; /* Make select elements take full width of their container */
+        min-width: 200px; /* Set a max-width to keep them uniform */
+        padding: 2px; /* Add some padding */
+        border: 1px solid #ccc; /* Border color */
+        border-radius: 4px; /* Rounded corners */
+        background-color: #f8f9fa; /* Light greyish background */
+        font-size: 15px; /* Font size for better readability */
+        color: #495057; /* Font color */
+        box-sizing: border-box; /* Ensures padding is included in the width */
+    }
 
-
+    /* Optional: Change the background color on focus */
+    .custom-select:focus {
+        outline: none; /* Remove default outline */
+        border-color: #80bdff; /* Change border color on focus */
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Add a shadow for focus effect */
+    }
     </style>
 </head>
 <body>
@@ -370,36 +392,39 @@ button:hover {
             <div class="form-group-row">
                 <div class="form-group">
                     <label for="dailyRate">Цена</label>
-                    <input type="number" id="dailyRate" step="0.01">
+                    <input type="number" id="dailyRate">
                 </div> 
      
                 <div class="form-group">
                     <label for="depositRate">Депозит</label>
-                    <input type="number" id="depositRate" step="0.01">
+                    <input type="number" id="depositRate">
                 </div>
             </div>
             <!-- Daily Rate -->
 
+<div class="form-group-row">
+    <div class="form-group">
+        <label for="color">Цвят</label>
+        <input type="text" id="color">
+    </div>
 
+
+    <!-- Fuel Type -->
+    <div class="form-group">
+        <label for="fuelType">Гориво</label>
+        <input type="text" id="fuelType">
+    </div>
+
+
+    <!-- Gearbox -->
+    <div class="form-group">
+        <label for="gearbox">Скорости</label>
+        <input type="text" id="gearbox">
+    </div>
+
+</div>
             <!-- Color -->
-            <div class="form-group">
-                <label for="color">Цвят</label>
-                <input type="text" id="color">
-            </div>
-        
-
-            <!-- Fuel Type -->
-            <div class="form-group">
-                <label for="fuelType">Гориво</label>
-                <input type="text" id="fuelType">
-            </div>
-     
-        
-            <!-- Gearbox -->
-            <div class="form-group">
-                <label for="gearbox">Скорости</label>
-                <input type="text" id="gearbox">
-            </div>
+          
         
             <!-- Description -->
             <div class="form-group">
@@ -447,41 +472,60 @@ button:hover {
             
         
             <!-- Fees -->
-            <div class="form-group-row">
-                <div class="form-group">
-                    <label for="fees">Данък</label>
-                    <input type="date" style="max-width: 100px;" id="fees">
-                </div>
-            
-                <div class="form-group">
-                    <label for="inspection">Преглед</label>
-                    <input type="date" style="max-width: 100px;" id="inspection">
-                </div>
-            
-                <div class="form-group">
-                    <label for="insurance">Винетка</label>
-                    <input type="date" style="max-width: 100px;" id="insurance">
-                </div>
-            
-                <div class="form-group">
+            <div class="form-group-row">         
+                    <div class="form-group" style="margin-left: 20px;">
+                        <label for="miscellaneous">Гражданска</label>
+                        <input type="date"  style="max-width: 135px;" id="miscellaneous">
+                </div>             
+                <div class="form-group" style="margin-left: 20px;">
                     <label for="additionalFees">Каско</label>
-                    <input type="date" style="max-width: 100px;" id="additionalFees">
+                    <input type="date"  style="max-width: 135px;" id="additionalFees">
                 </div>
-            
-                <div class="form-group">
-                    <label for="miscellaneous">Гражданска</label>
-                    <input type="date" style="max-width: 100px;" id="miscellaneous">
+                <div class="form-group" style="margin-left: 20px;">
+                    <label for="insurance">Винетка</label>
+                    <input type="date"  style="max-width: 135px;" id="insurance">
                 </div>
             </div>
+
+            <div class="form-group-row" >
+                <div class="form-group" style="margin-left: 20px;">
+                    <label for="fees">Данък</label>
+                    <input type="date" style="max-width: 135px;" id="fees">
+                </div>
             
+                <div class="form-group" style="margin-left: 20px;">
+                    <label for="inspection">Преглед</label>
+                    <input type="date" style="max-width: 135px;" id="inspection">
+                </div>
+
+                <div class="form-group" style="margin-left: 20px;">
+                    <label for="serviz">В сервиз до</label>
+                    <input type="date" style="max-width: 135px;" id="serviz">
+                </div>
+            </div>
         
             <!-- Submit Button -->
             <div class="buttonMarker" style="max-width: 60%; margin: 0 auto; display: flex; justify-content: center; align-items: center;">
-                <button id="addClientButton">Добави автомобил</button>
+                <button id="carButton">Добави автомобил</button>
             </div>
             
         </div>
+        <script>
+            const crudDropdown = document.getElementById("crudOperations");
+            const actionButton = document.getElementById("carButton");
         
+            // Function to update the button text based on the selected option
+            function updateButtonText() {
+                actionButton.textContent = crudDropdown.options[crudDropdown.selectedIndex].text;
+            }
+        
+            // Set the initial button text based on the dropdown's default selected option
+            updateButtonText();
+        
+            // Add event listeners to update the button text whenever the dropdown changes
+            crudDropdown.addEventListener("input", updateButtonText);
+            crudDropdown.addEventListener("change", updateButtonText);
+        </script>
         
 
         <!-- Table Container -->
@@ -506,25 +550,35 @@ button:hover {
             </table>
         </div>
 
+        
         <!-- Button Container -->
         <div class="button-container">
             <!-- Search by Name -->
             <div class="form-group">
-                <label for="searchByName">Търсене по клас</label>
-                <input type="text" id="searchByName" placeholder="Enter name">
+                <label for="searchByClass">Търсене по клас</label>
+                <select id="searchByClass" class="custom-select">
+                    <option value="">Изберете клас</option>
+                    <!-- Options will be populated here -->
+                </select>
             </div>
-        
-            <!-- Search by ID -->
+            
             <div class="form-group">
-                <label for="searchById">Търсене по модел</label>
-                <input type="text" id="searchById" placeholder="Enter ID">
+                <label for="searchByModel">Търсене по модел</label>
+                <select id="searchByModel" class="custom-select">
+                    <option value="">Изберете модел</option>
+                    <!-- Options will be populated here -->
+                </select>
             </div>
-        
-            <!-- Search by Phone -->
+            
             <div class="form-group">
-                <label for="searchByPhone">Търсене по марка</label>
-                <input type="text" id="searchByPhone" placeholder="Enter phone number">
+                <label for="searchByBrand">Търсене по марка</label>
+                <select id="searchByBrand" class="custom-select">
+                    <option value="">Изберете марка</option>
+                    <!-- Options will be populated here -->
+                </select>
             </div>
+            
+
         
             <!-- Search by Reservation Code -->
             <div class="form-group">
@@ -538,14 +592,79 @@ button:hover {
         </div>
         
     </div>
-    <script>
-        const crudDropdown = document.getElementById("crudOperations");
-        const actionButton = document.getElementById("addClientButton");
-    
-        // Function to update the button text based on the selected option
-        crudDropdown.addEventListener("change", () => {
-            actionButton.textContent = crudDropdown.options[crudDropdown.selectedIndex].text;
-        });
-    </script>
+<script>
+    // Function to filter table data based on user inputs
+function filterData() {
+    const classValue = document.getElementById('searchByClass').value; // Get selected class
+    const modelValue = document.getElementById('searchByModel').value; // Get selected model
+    const brandValue = document.getElementById('searchByBrand').value; // Get selected brand
+    const reservationValue = document.getElementById('searchByReservation').value; // Get input for reservation code
+
+    const rows = document.querySelectorAll('#client-data tr'); // Get all table rows in the tbody
+
+    rows.forEach(row => {
+        const cells = row.querySelectorAll('td'); // Get all cells in the current row
+        const rowClass = cells[0].textContent; // Class is in the first cell
+        const rowBrand = cells[1].textContent; // Brand is in the second cell
+        const rowModel = cells[2].textContent; // Model is in the third cell
+        const rowReservation = cells[3].textContent; // Reservation code is in the fourth cell
+
+        // Check if the row matches the filter criteria
+        const matchesClass = classValue === "" || rowClass === classValue;
+        const matchesModel = modelValue === "" || rowModel === modelValue;
+        const matchesBrand = brandValue === "" || rowBrand === brandValue;
+        const matchesReservation = reservationValue === "" || rowReservation.includes(reservationValue);
+
+        // Show or hide the row based on the matches
+        if (matchesClass && matchesModel && matchesBrand && matchesReservation) {
+            row.style.display = ''; // Show the row if it matches
+        } else {
+            row.style.display = 'none'; // Hide the row if it doesn't match
+        }
+    });
+}
+
+// Attach event listeners to the search button and input fields for filtering
+document.getElementById('searchButton').addEventListener('click', filterData); // Filter on button click
+document.querySelectorAll('.custom-select').forEach(select => {
+    select.addEventListener('change', filterData); // Filter on dropdown change
+});
+document.getElementById('searchByReservation').addEventListener('input', filterData); // Filter on input change
+
+</script>
+
+            <form id="carForm" style="display: none;">
+                <input type="text" id="licensePlate1" placeholder="Рег. №" required>
+                <input type="text" id="type1" placeholder="Клас" required>
+                <input type="text" id="brand1" placeholder="Марка" required>
+                <input type="text" id="model1" placeholder="Модел" required>
+                <input type="number" id="dailyRate1" placeholder="Цена" step="0.01" required>
+                <input type="number" id="depositRate1" placeholder="Депозит" step="0.01" required>
+                <input type="text" id="color1" placeholder="Цвят" required>
+                <input type="text" id="fuelType1" placeholder="Гориво" required>
+                <input type="text" id="gearbox1" placeholder="Скорости" required>
+                <textarea id="description1" placeholder="Бележки" rows="3"></textarea>
+                
+                <input type="text" id="otherFeature11" placeholder="Цена за Стъкла и Гуми">
+                <input type="text" id="otherFeature21" placeholder="Цена за ВИП застраховка">
+                
+                <input type="text" id="availability11" placeholder="Цена за Гърция">
+                <input type="text" id="availability21" placeholder="Цена за Румъния">
+                <input type="text" id="availability31" placeholder="Цена за Македония">
+                <input type="text" id="availability41" placeholder="Цена за Сърбия">
+                
+                <input type="date" id="miscellaneous1">
+                <input type="date" id="additionalFees1">
+                <input type="date" id="insurance1">
+                <input type="date" id="fees1">
+                <input type="date" id="inspection1">
+                <input type="date" id="serviz1">
+                
+                <button type="submit" id="submitDB">Submit</button>
+            </form>
+
+            <script src="carsScript.js"></script>
+            
+            
 </body>
 </html>

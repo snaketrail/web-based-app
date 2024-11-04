@@ -18,7 +18,7 @@
         .menu-bar {
             display: flex;
             background-color: #333;
-            margin-bottom: 20px;
+            margin-bottom: 40px;
             position: absolute;
             top: 0;
             left: 0;
@@ -45,7 +45,7 @@
             justify-content: space-between; /* Evenly distribute columns */
             max-width: 100%;
             padding: 0;
-            margin-top: 30px;
+            margin-top: 50px;
         }
 
         .column {
@@ -68,10 +68,6 @@
             justify-content: space-between; /* Space between inputs */
             flex-wrap: wrap; /* Wrap inputs if the screen is small */
             margin-bottom: 5px; /* Space below input groups */
-        }
-
-        .input-group label {
-
         }
 
         .input-group input {
@@ -114,9 +110,7 @@
 label {
     margin-right: 0px; /* Space between label and input */
 }
-.input-group input{
 
-}
 input {
     flex: 1; /* Make input take the remaining space */
     padding: 0px; /* Optional padding for input */
@@ -620,18 +614,7 @@ button {
         </div>
     
     </nav>
-    <div class="extra-roll-contracts" style="height: 10px; width: 100%; margin-bottom: 2px;margin-top: 2px; text-align: center;padding: 5px 10px;">
-        <h2>Договор</h2>
-        <h2>№</h2>
-
-        <label  style="margin-right: 80px;"></label>
-        <label >Редакции</label>
-        <label >0</label>
-        <label >Продължения</label>
-        <label >0</label>
-
-        <button>Разгледай</button>
-    </div>
+    
     
 
     <div class="container">
@@ -641,7 +624,7 @@ button {
                     <div class="input-group">
                         <div class="input-row1">
                             <h2>Наемател</h2>
-                            <button type="button">Търси клиент</button>
+                            <button type="button" id="renteeSearches">Търси клиент</button>
                         </div>
                         
                         <div class="input-row">
@@ -683,13 +666,118 @@ button {
                 
             </div>
             
+            <div id="clientModal" class="modal" style="display:none;">
+                <div class="modal-content">
+                    <span class="close" id="closeModal">&times;</span>
+                    <h2>Select Client</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th><input type="text" id="filter-egn" placeholder="Filter by ЕГН or Дата"></th>
+                                <th colspan="2"><input type="text" id="filter-name" placeholder="Filter by Име or Фамилия"></th>
+                                <th><input type="text" id="filter-phone" placeholder="Filter by Телефон"></th>
+                            </tr>
+                            <tr>
+                                <th>ЕГН или Дата</th>
+                                <th>Име</th>
+                                <th>Фамилия</th>
+                                <th>Телефон</th>
+                            </tr>
+                        </thead>
+                        <tbody id="client-data"></tbody>
+                    </table>
+                </div>
+            </div>
             
+            <style>
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Slightly darker overlay */
+    overflow: auto;
+}
+
+.modal-content {
+    background-color: #ffffff;
+    margin: 8% auto;
+    padding: 25px;
+    border: 1px solid #ccc;
+    width: 85%;
+    max-width: 900px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    animation: slideIn 0.3s ease-in-out; /* Smooth opening animation */
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(-10%); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.close {
+    color: #999;
+    float: right;
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: -10px;
+}
+
+.close:hover,
+.close:focus {
+    color: #333;
+    cursor: pointer;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+thead th {
+    background-color: #f5f5f5;
+    font-weight: bold;
+}
+
+tr:hover {
+    background-color: #f9f9f9;
+    cursor: pointer;
+}
+
+thead input[type="text"] {
+    width: 95%;
+    padding: 8px;
+    margin: 4px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+thead input[type="text"]:focus {
+    border-color: #777;
+    outline: none;
+    box-shadow: 0 0 5px rgba(100, 100, 100, 0.2);
+}
+
+
+            </style>
             <div class="section driver-section">
                 <div class="input-group">
                     <!-- Row 1: Header and Button -->
                     <div class="input-row1">
                         <h2>Шофьор</h2>
-                        <button type="button">Копирай от наемател</button>
+                        <!-- <button type="button">Копирай от наемател</button> -->
                     </div>
             
                     <!-- Row 2-5: Input Rows with Labels and Inputs -->
@@ -711,7 +799,7 @@ button {
                     </div>
                     <div class="input-row">
                         <label for="input5-driver">Издадена от</label>
-                        <input type="text" id="input6-driver" class="wide-input" >
+                        <input type="text" id="input5-driver" class="wide-input" >
                     </div>
             
                     <!-- Last Row: Two Date Inputs with Labels -->
@@ -729,7 +817,7 @@ button {
                 <div class="input-group">
                     <div class="input-row1">
                         <h2>Втори шофьор</h2>
-                        <button type="button">Търси клиент</button>
+                        <button type="button" id="secondDriverSearches">Търси клиент</button>
                     </div>
                     <div class="input-row">
                         <label for="input1-driver2">Име Презиме Фамилия</label>
@@ -760,12 +848,88 @@ button {
                     
                 </div>
             </div>
+            <div id="secondDriverModal" class="modal" style="display:none;">
+                <div class="modal-content">
+                    <span class="close" id="closeSecondDriverModal">&times;</span>
+                    <h2>Изберете Втори Шофьор</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th><input type="text" id="filter-egn-driver2" placeholder="Filter by ЕГН"></th>
+                                <th colspan="2"><input type="text" id="filter-name-driver2" placeholder="Filter by Име или Фамилия"></th>
+                                <th><input type="text" id="filter-phone-driver2" placeholder="Filter by Телефон"></th>
+                            </tr>
+                            <tr>
+                                <th>ЕГН</th>
+                                <th>Име</th>
+                                <th>Фамилия</th>
+                                <th>Телефон</th>
+                            </tr>
+                        </thead>
+                        <tbody id="driver2-data"></tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <style>
+                /* You can reuse the previous styles or add new ones if needed */
+                .modal {
+                    display: none;
+                    position: fixed;
+                    z-index: 1000;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    overflow: auto;
+                    background-color: rgba(0, 0, 0, 0.5); /* Black with opacity */
+                }
+            
+                .modal-content {
+                    background-color: #fefefe;
+                    margin: 10% auto;
+                    padding: 20px;
+                    border: 1px solid #888;
+                    width: 80%;
+                    max-width: 900px;
+                    border-radius: 8px;
+                }
+            
+                .close {
+                    color: #aaa;
+                    float: right;
+                    font-size: 28px;
+                    font-weight: bold;
+                }
+            
+                .close:hover,
+                .close:focus {
+                    color: black;
+                    cursor: pointer;
+                }
+            
+                table {
+                    width: 100%;
+                    border-collapse: collapse;
+                }
+            
+                th, td {
+                    padding: 8px;
+                    border: 1px solid #ddd;
+                    text-align: left;
+                }
+            
+                tr:hover {
+                    background-color: #f1f1f1;
+                    cursor: pointer;
+                }
+            </style>
             
             <div class="section company-section">
                 <div class="input-group">
                     <div class="input-row1">
                         <h2>Фирма</h2>
-                        <button type="button">Търси фирма</button>
+                        <button type="button" id="companyModalButton">Търси фирма</button>
                     </div>
                     <div class="input-row">
                         <label for="input1-firma">Име на фирма</label>
@@ -789,8 +953,41 @@ button {
                     </div>
                 </div>
                 </div>
+                <!-- Company Modal -->
+<div id="companyModal" class="modal" style="display:none;">
+    <div class="modal-content">
+        <span class="close" id="closeCompanyModal">&times;</span>
+        <h2>Фирма</h2>
+        
+        <table id="company-data">
+            <thead>
+                <tr>
+                    <th>
+                        <input type="text" id="filter-company-name" placeholder="Филтър по Име на фирма">
+                    </th>
+                    <th>
+                        <input type="text" id="filter-eik" placeholder="Филтър по ЕИК/БУЛСТАТ">
+                    </th>
+                    <th>
+                        <input type="text" id="filter-address" placeholder="Филтър по Адрес">
+                    </th>
+                </tr>
+                <tr>
+                    <th>Име на фирма</th>
+                    <th>ЕИК/БУЛСТАТ</th>
+                    <th>Адрес</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Company rows will be populated here -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
         </div>
         <div class="column">
+ 
             <div class="section reservation-section">
                 <div class="input-group">
                     <!-- Row 1: Header only -->
@@ -800,9 +997,26 @@ button {
                     <div class="input-row">
                         <label for="dropdown4-rent"   class="rental-label">Място на даване</label>
                         <select id="dropdown4-rent"  style="max-width: 280px;">
-                            <option value="">Офис Пловдив, Константин Величков 6</option>
-                            <option value="option1">Офис София, Източна Тангента 161</option>
-                            <option value="option2">Офис София, Летище Терминал 1</option>
+                            <option value="Офис Пловдив, Константин Величков 6">Офис Пловдив, Константин Величков 6</option>
+                            <option value="Офис Пловдив, Панаира">Офис Пловдив, Панаира</option>
+                            <option value="Офис Пловдив, Летище">Офис Пловдив, Летище</option>
+                            <option value="Офис Пловдив, доставка на адрес">Офис Пловдив, доставка на адрес</option>
+                            <option value="Офис София, Източна Тангента 161">Офис София, Източна Тангента 161</option>
+                            <option value="Офис София, Летище Терминал 1">Офис София, Летище Терминал 1</option>
+                            <option value="Офис София, Летище Терминал 2">Офис София, Летище Терминал 2</option>
+                            <option value="Офис София, доставка на адрес">Офис София, доставка на адрес</option>
+
+                            <option value="Бургас, Летище">Бургас, Летище</option>
+                            <option value="Бургас, доставка на адрес">Бургас, доставка на адрес</option>
+                            <option value="Асеновград">Асеновград</option>
+                            <option value="Пазарджик">Пазарджик</option>
+                            <option value="Хисаря">Хисаря</option>
+                            <option value="Велинград">Велинград</option>
+                            <option value="Стара Загора">Стара Загора</option>
+                            <option value="Смолян">Смолян</option>
+                            <option value="Пампорово">Пампорово</option>
+
+
                         </select>
                     </div>
             
@@ -810,9 +1024,25 @@ button {
                     <div class="input-row">
                         <label for="dropdown5-rent" class="rental-label">Място на връщане</label>
                         <select id="dropdown5-rent" style="max-width: 280px;">
-                            <option value="">Офис Пловдив, Константин Величков 6</option>
-                            <option value="option1">Option 1</option>
-                            <option value="option2">Option 2</option>
+                            <option value="Офис Пловдив, Константин Величков 6">Офис Пловдив, Константин Величков 6</option>
+                            <option value="Офис Пловдив, Панаира">Офис Пловдив, Панаира</option>
+                            <option value="Офис Пловдив, Летище">Офис Пловдив, Летище</option>
+                            <option value="Офис Пловдив, доставка на адрес">Офис Пловдив, доставка на адрес</option>
+                            <option value="Офис София, Източна Тангента 161">Офис София, Източна Тангента 161</option>
+                            <option value="Офис София, Летище Терминал 1">Офис София, Летище Терминал 1</option>
+                            <option value="Офис София, Летище Терминал 2">Офис София, Летище Терминал 2</option>
+                            <option value="Офис София, доставка на адрес">Офис София, доставка на адрес</option>
+
+                            <option value="Бургас, Летище">Бургас, Летище</option>
+                            <option value="Бургас, доставка на адрес">Бургас, доставка на адрес</option>
+                            <option value="Асеновград">Асеновград</option>
+                            <option value="Пазарджик">Пазарджик</option>
+                            <option value="Хисаря">Хисаря</option>
+                            <option value="Велинград">Велинград</option>
+                            <option value="Стара Загора">Стара Загора</option>
+                            <option value="Смолян">Смолян</option>
+                            <option value="Пампорово">Пампорово</option>
+
                         </select>
                     </div>
                     
@@ -842,9 +1072,9 @@ button {
                     <div class="input-row">
                         <label for="dropdown3-rent" class="rental-label">Направи</label>
                         <select id="dropdown3-rent" style="max-width: 150px;">
-                            <option value="">Договор</option>
-                            <option value="option1">Option 1</option>
-                            <option value="option2">Option 2</option>
+                            <option value="Договор">Договор</option>
+                            <option value="Резервация">Резервация</option>
+                            <option value="Връщане">Връщане</option>
                         </select>
                         <label for="textfield-rent" style="margin-left: 20px"  class="rental-label">Брой дни</label>
                         <input type="text" id="textfield-rent" style="margin-left: -80px; max-width: 40px;">
@@ -858,7 +1088,7 @@ button {
                     <!-- Row 1: Header and Button -->
                     <div class="input-row1" >
                         <h2>Автомобил</h2>
-                        <button type="button">Търси</button>
+                        <button type="button" id="search-cars-button">Търси</button>
                     </div>
             
                     <!-- Row 2: Label + Text + Label + Text -->
@@ -887,7 +1117,105 @@ button {
                 </div>
             </div>
             
-            
+         
+            <div id="carModal" class="modal" style="display:none;">
+                <div class="modal-content">
+                    <span class="close" id="closeCarModal">&times;</span>
+                    <h2>Автомобил</h2>
+                    
+                    <table  id="car-data">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <select id="filter-class">
+                                        <option value="">Филтър по Клас</option>
+                                        <!-- Options will be populated here -->
+                                    </select>
+                                </th>
+                                <th>
+                                    <select id="filter-brand">
+                                        <option value="">Филтър по Марка</option>
+                                        <!-- Options will be populated here -->
+                                    </select>
+                                </th>
+                                <th>
+                                    <select id="filter-model">
+                                        <option value="">Филтър по Модел</option>
+                                        <!-- Options will be populated here -->
+                                    </select>
+                                </th>
+                                <th>
+                                    <input type="text" id="filter-reg" placeholder="Филтър по Рег. №">
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>Клас</th>
+                                <th>Марка</th>
+                                <th>Модел</th>
+                                <th>Рег. №</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Car rows will be populated here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+<style>
+    .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5); /* Black with opacity */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 900px;
+    border-radius: 8px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    cursor: pointer;
+}
+
+table {
+    width: 100%; /* Full width of parent */
+    border-collapse: collapse; /* Merge table borders */
+    margin-top: 20px; /* Space above table */
+}
+
+th, td {
+    padding: 8px; /* Padding inside cells */
+    border: 1px solid #ddd; /* Light border */
+    text-align: left; /* Align text to the left */
+}
+
+tr:hover {
+    background-color: #f1f1f1; /* Highlight row on hover */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+</style>            
             
             <div class="section reservation-section">
                 <div class="input-group">
@@ -901,9 +1229,9 @@ button {
                     <div class="input-row" style="margin-bottom: 10px;">
                         <label for="dropdown2-reservation" style="margin-right: 50px;" >Сайт на резервация</label>
                         <select id="dropdown2-reservation" style="max-width: 200px;">
-                            <option value="">Select an option</option>
-                            <option value="option1">Option 1</option>
-                            <option value="option2">Option 2</option>
+                            <option value="vivorent.bg">vivorent.bg</option>
+                            <option value="plovdivrentacar.com">plovdivrentacar.com</option>
+                            <option value="jetrentacar.bg">jetrentacar.bg</option>
                         </select>
                     </div>
                     
@@ -911,9 +1239,11 @@ button {
                     <div class="input-row" style="margin-bottom: 10px;">
                         <label for="dropdown1-reservation" style="margin-right: 120px;">Отстъпка</label>
                         <select id="dropdown1-reservation" style="max-width: 200px;">
-                            <option value="">0%</option>
-                            <option value="option1">Option 1</option>
-                            <option value="option2">Option 2</option>
+                            <option value="0">0%</option>
+                            <option value="5">5%</option>
+                            <option value="10">10%</option>
+                            <option value="15">15%</option>
+
                         </select>
                     </div>
                 </div>
@@ -1005,120 +1335,120 @@ button {
                 <div class="custom-column column3">
                     <h3>Брой</h3>
                     <div class="input-row">
-                        <input type="text" id="input2">
+                        <input type="text"  style="visibility: hidden;">
                     </div>
                     <div class="input-row">
-                        <input type="text" id="input3" >
+                        <input type="text"   style="visibility: hidden;">
                     </div>
                     <div class="input-row">
-                        <input type="text" id="input4" >
+                        <input type="text" id="check3-input" >
                     </div>
                     <div class="input-row">
-                        <input type="text" id="input5">
+                        <input type="text" id="check4-input">
                     </div>
                     <div class="input-row">
-                        <input type="text" id="input6">
+                        <input type="text" id="check5-input">
                     </div>
                     <div class="input-row">
-                        <input type="text" id="input7" >
+                        <input type="text" id="check6-input" >
                     </div>
                     <div class="input-row">
-                        <input type="text" id="input8" >
+                        <input type="text" style="visibility: hidden;" >
                     </div>
                     <div class="input-row">
-                        <input type="text" id="input9" >
+                        <input type="text"   style="visibility: hidden;">
                     </div>
                     <div class="input-row">
-                        <input type="text" id="input10" >
+                        <input type="text"    style="visibility: hidden;">
                     </div>
                     <div class="input-row">
-                        <input type="text" id="input11" >
+                        <input type="text"  style="visibility: hidden;" >
                     </div>
                     <div class="input-row">
-                        <input type="text" id="input12" >
+                        <input type="text"  style="visibility: hidden;">
                     </div>
                     <div class="input-row">
-                        <input type="text" id="input13" >
+                        <input type="text"  style="visibility: hidden;">
                     </div>
                 </div>
             
                 <div class="custom-column column4">
                     <h3>Цена</h3>
                     <div class="input-row">
-                        <input type="text" id="input1b">
+                        <input type="text" id="check1-price">
                     </div>
                     <div class="input-row">
-                        <input type="text" id="input2b" >
+                        <input type="text" id="check2-price" >
                     </div>
                     <div class="input-row">
-                        <input type="text" id="input3b" >
+                        <input type="text" id="check3-price">
                     </div>
                     <div class="input-row">
-                        <input type="text" id="input4b" >
+                        <input type="text" id="check4-price" >
                     </div>
                     <div class="input-row">
-                        <input type="text" id="input5b" >
+                        <input type="text" id="check5-price" >
                     </div>
                     <div class="input-row">
-                        <input type="text" id="input6b">
+                        <input type="text" id="check6-price">
                     </div>
                     <div class="input-row">
-                        <input type="text" id="input7b">
+                        <input type="text" id="check7-price">
                     </div>
                     <div class="input-row">
-                        <input type="text" id="input8b" >
+                        <input type="text" id="check8-price" >
                     </div>
                     <div class="input-row">
-                        <input type="text" id="input9b" >
+                        <input type="text" id="check9-price" >
                     </div>
                     <div class="input-row">
-                        <input type="text" id="input10b">
+                        <input type="text" id="check10-price">
                     </div>
                     <div class="input-row">
-                        <input type="text" id="input11b" >
+                        <input type="text" id="check11-price" >
                     </div>
                     <div class="input-row">
-                        <input type="text" id="input12b" >
+                        <input type="text" id="check12-price" >
                     </div>
                 </div>
             
                 <div class="custom-column column5">
                     <h3>Депозит</h3>
                     <div class="input-row">
-                        <input type="text" id="input1c">
+                        <input type="text"  style="visibility: hidden;">
                     </div>
                     <div class="input-row">
-                        <input type="text" id="input2c">
+                        <input type="text"  style="visibility: hidden;">
                     </div>
                     <div class="input-row">
-                        <input type="text" id="input3c" >
+                        <input type="text" style="visibility: hidden;">
                     </div>
                     <div class="input-row">
-                        <input type="text" id="input4c" >
+                        <input type="text"  style="visibility: hidden;">
                     </div>
                     <div class="input-row">
-                        <input type="text" id="input5c" >
+                        <input type="text"  style="visibility: hidden;">
                     </div>
                     <div class="input-row">
-                        <input type="text" id="input6c" >
+                        <input type="text"  style="visibility: hidden;">
                     </div>
                     <div class="input-row">
-                        <input type="text" id="input7c" >
+                        <input type="text" id="check7-deposit" >
                     </div>
                     <div class="input-row">
-                        <input type="text" id="input8c" >
+                        <input type="text" id="check8-deposit" >
                     </div>
                     <div class="input-row">
-                        <input type="text" id="input9c">
+                        <input type="text" id="check9-deposit">
                     </div>
                     <div class="input-row">
-                        <input type="text" id="input10c" >
+                        <input type="text" id="check10-deposit" >
                     </div>
                     <div class="input-row">
-                        <input type="text" id="input11c" >
+                        <input type="text" id="check11-deposit" >
                     </div>
                     <div class="input-row">
-                        <input type="text" id="input12c" >
+                        <input type="text" id="check12-deposit" >
                     </div>
                 </div>
             </div>
@@ -1127,6 +1457,20 @@ button {
             
         </div>
         <div class="column">
+            <div class="section">
+                <div class="extra-roll-contracts" style="height: 10px; width: 100%; margin-bottom: 2px; text-align: center;padding: 5px 10px;">
+                    <h2>Договор</h2>
+                    <h2>№</h2>
+                    <h2></h2>
+                    <label  style="margin-right: 80px;"></label>
+                    <label >Редакции</label>
+                    <label >0</label>
+                    <label >Продължения</label>
+                    <label >0</label>
+            
+                    <button>Разгледай</button>
+                </div>
+            </div>
             <div class="section">
                 <div class="input-group">
                     <!-- Row 1: Header -->
@@ -1223,16 +1567,506 @@ button {
             
 
         </div>
-        <div class="column" style="max-width: 10%;">
-            <a href="#" class="button">Нов договор</a>
-            <a href="#" class="button">Запази</a>
-            <a href="#" class="button">Редактирай</a>
-            <a href="#" class="button">Изтрий</a>
-            <a href="#" class="button">Продължи</a>
-            <a href="#" class="button">Търсене</a>
-            <a href="#" class="button">Принтирай</a>
+        <form action="" method="post" id="formForInserting" style="display: none; visibility: hidden;">
 
+            
+            <div>
+                <label for="input1-rentee-form">Име Презиме Фамилия</label>
+                <input type="text" id="input1-rentee-form">
+            </div>
+            
+            <div >
+                <label for="input2-rentee-form">ЕГН или дата на раждане</label>
+                <input type="text" id="input2-rentee-form" >
+            </div>
+            
+            <div>
+                <label for="input3-rentee-form">Телефон</label>
+                <input type="text" id="input3-rentee-form" >
+            </div>
+            
+            <div >
+                <label for="input4-rentee-form">Номер на л.к.</label>
+                <input type="text" id="input4-rentee-form" >
+            </div>
+
+            <div >
+                <label for="input5-rentee-form">Адрес по л.к.</label>
+                <input type="text" id="input5-rentee-form"  >
+            </div>
+            <div >
+                <label for="input6-rentee-form">Издадена от</label>
+                <input type="text" id="input6-rentee-form" >
+                <label for="dateInput-rentee-form" >Дата на издаване</label>
+                <input type="date"  id="dateInput-rentee-form">
+            </div>
+            <div>
+                <label for="input1-driver-form">Име Презиме Фамилия</label>
+                <input type="text" id="input1-driver-form">
+            </div>
+            <div >
+                <label for="input2-driver-form">ЕГН или дата на раждане</label>
+                <input type="text" id="input2-driver-form">
+            </div>
+            <div >
+                <label for="input3-driver-form">Телефон</label>
+                <input type="text" id="input3-driver-form">
+            </div>
+            <div >
+                <label for="input4-driver-form">Св. за у-ние на МПС №</label>
+                <input type="text" id="input4-driver-form">
+            </div>
+            <div >
+                <label for="input5-driver-form">Издадена от</label>
+                <input type="text" id="input5-driver-form"  >
+            </div>
+    
+            <!-- Last Row: Two Date Inputs with Labels -->
+            <div  >
+                <label for="dateInput1-driver-form">Издадена на</label>
+                <input type="date"  id="dateInput1-driver-form" >
+                <label for="dateInput2-driver-form" >Валидна до</label>
+                <input type="date"  id="dateInput2-driver-form">
+            </div>
+            <div >
+                <label for="input1-driver2-form">Име Презиме Фамилия</label>
+                <input type="text" id="input1-driver2-form" >
+            </div>
+            <div>
+                <label for="input2-driver2-form">ЕГН</label>
+                <input type="text" id="input2-driver2-form"  >
+            </div>
+            <div>
+                <label for="input3-driver2-form">Телефон</label>
+                <input type="text" id="input3-driver2-form" >
+            </div>
+            <div >
+                <label for="input4-driver2-form">Св. за у-ние на МПС №</label>
+                <input type="text" id="input4-driver2-form" >
+            </div>
+            <div >
+                <label for="input5-driver2-form">Издадена от</label>
+                <input type="text" id="input5-driver2-form" >
+            </div>
+            <div>
+                <label for="dateInput1-driver2-form">Издадена на</label>
+                <input type="date" id="dateInput1-driver2-form" >
+                <label for="dateInput2-driver2-form"  >Валидна до</label>
+                <input type="date" id="dateInput2-driver2-form" >
+            </div>
+            <div >
+                <label for="input1-firma-form">Име на фирма</label>
+                <input type="text" id="input1-firma-form" >
+            </div>
+            <div >
+                <label for="input2-firma-form">ЕИК/БУЛСТАТ</label>
+                <input type="text" id="input2-firma-form" >
+            </div>
+            <div>
+                <label for="input3-firma-form">Адрес</label>
+                <input type="text" id="input3-firma-form" >
+            </div>
+            <div >
+                <label for="input4-firma-form">Юридическо лице</label>
+                <input type="text" id="input4-firma-form">
+            </div>
+            <div >
+                <label for="input5-firma-form">Телефон</label>
+                <input type="text" id="input5-firma-form" >
+            </div>
+            <div >
+                <!-- Row 1: Header only -->
+ 
+                <div>
+                    <label for="dropdown4-rent-form"  >Място на даване</label>
+                    <select id="dropdown4-rent-form" >
+                        <option value="Офис Пловдив, Константин Величков 6">Офис Пловдив, Константин Величков 6</option>
+                        <option value="Офис Пловдив, Панаира">Офис Пловдив, Панаира</option>
+                        <option value="Офис Пловдив, Летище">Офис Пловдив, Летище</option>
+                        <option value="Офис Пловдив, доставка на адрес">Офис Пловдив, доставка на адрес</option>
+                        <option value="Офис София, Източна Тангента 161">Офис София, Източна Тангента 161</option>
+                        <option value="Офис София, Летище Терминал 1">Офис София, Летище Терминал 1</option>
+                        <option value="Офис София, Летище Терминал 2">Офис София, Летище Терминал 2</option>
+                        <option value="Офис София, доставка на адрес">Офис София, доставка на адрес</option>
+
+                        <option value="Бургас, Летище">Бургас, Летище</option>
+                        <option value="Бургас, доставка на адрес">Бургас, доставка на адрес</option>
+                        <option value="Асеновград">Асеновград</option>
+                        <option value="Пазарджик">Пазарджик</option>
+                        <option value="Хисаря">Хисаря</option>
+                        <option value="Велинград">Велинград</option>
+                        <option value="Стара Загора">Стара Загора</option>
+                        <option value="Смолян">Смолян</option>
+                        <option value="Пампорово">Пампорово</option>
+
+
+                    </select>
+                </div>
+        
+                <!-- Row 6: Label + Dropdown (only) -->
+                <div >
+                    <label for="dropdown5-rent-form">Място на връщане</label>
+                    <select id="dropdown5-rent-form" >
+                        <option value="Офис Пловдив, Константин Величков 6">Офис Пловдив, Константин Величков 6</option>
+                        <option value="Офис Пловдив, Панаира">Офис Пловдив, Панаира</option>
+                        <option value="Офис Пловдив, Летище">Офис Пловдив, Летище</option>
+                        <option value="Офис Пловдив, доставка на адрес">Офис Пловдив, доставка на адрес</option>
+                        <option value="Офис София, Източна Тангента 161">Офис София, Източна Тангента 161</option>
+                        <option value="Офис София, Летище Терминал 1">Офис София, Летище Терминал 1</option>
+                        <option value="Офис София, Летище Терминал 2">Офис София, Летище Терминал 2</option>
+                        <option value="Офис София, доставка на адрес">Офис София, доставка на адрес</option>
+
+                        <option value="Бургас, Летище">Бургас, Летище</option>
+                        <option value="Бургас, доставка на адрес">Бургас, доставка на адрес</option>
+                        <option value="Асеновград">Асеновград</option>
+                        <option value="Пазарджик">Пазарджик</option>
+                        <option value="Хисаря">Хисаря</option>
+                        <option value="Велинград">Велинград</option>
+                        <option value="Стара Загора">Стара Загора</option>
+                        <option value="Смолян">Смолян</option>
+                        <option value="Пампорово">Пампорово</option>
+
+                    </select>
+                </div>
+                
+                <!-- Row 2: Label + Dropdown + Label (Date) + Label (Hours) -->
+                <div >
+                    <label>Начална дата/час</label>
+                    <div >
+                        <label for="dateInput1-rent-form">Дата</label>
+                        <input type="date" id="dateInput1-rent-form">
+                        <label for="hoursInput1-rent-form" >Час</label>
+                        <input type="time"  id="hoursInput1-rent-form">
+                    </div>
+                </div>
+        
+                <!-- Row 3: Same structure as Row 2 -->
+                <div >
+                    <label  >Крайна дата/час</label>
+                    <div >
+                        <label for="dateInput2-rent2-form" >Дата</label>
+                        <input type="date"  id="dateInput2-rent2-form">
+                        <label for="hoursInput2-rent2-form">Час</label>
+                        <input type="time" id="hoursInput2-rent2-form">
+                    </div>
+                </div>
+        
+                <!-- Row 4: Label + Dropdown + Label + Textfield -->
+                <div >
+                    <label for="dropdown3-rent-form" >Направи</label>
+                    <select id="dropdown3-rent-form" >
+                        <option value="Договор">Договор</option>
+                        <option value="Резервация">Резервация</option>
+                        <option value="Връщане">Връщане</option>
+                    </select>
+                    <label for="textfield-rent-form" >Брой дни</label>
+                    <input type="text" id="textfield-rent-form" >
+                </div>
+            </div>
+            <div >
+                <label for="input1-vehicle-form" >Клас</label>
+                <input type="text" id="input1-vehicle-form" >
+                <label for="input2-vehicle-form">Марка</label>
+                <input type="text"  id="input2-vehicle-form" >
+            </div>
+    
+            <!-- Row 3: Label + Text + Label + Text -->
+            <div >
+                <label for="input3-vehicle-form">Модел</label>
+                <input type="text" id="input3-vehicle-form"  >
+                <label for="input4-vehicle-form">Рег. №</label>
+                <input type="text" id="input4-vehicle-form" >
+            </div>
+    
+            <!-- Row 4: Label + Text + Label + Text -->
+            <div>
+                <label for="input5-vehicle-form">Цена</label>
+                <input type="text" id="input5-vehicle-form" >
+                <label for="input6-vehicle-form">Депозит</label>
+                <input type="text" id="input6-vehicle-form" >
+            </div>
+            <div >
+                <label for="input1-reservation-form" >Код на резервация</label>
+                <input type="text" id="input1-reservation-form"  >
+            </div>
+            
+            <!-- Row 2: Label + Dropdown -->
+            <div >
+                <label for="dropdown2-reservation-form" >Сайт на резервация</label>
+                <select id="dropdown2-reservation-form">
+                    <option value="vivorent.bg">vivorent.bg</option>
+                    <option value="plovdivrentacar.com">plovdivrentacar.com</option>
+                    <option value="jetrentacar.bg">jetrentacar.bg</option>
+                </select>
+            </div>
+            
+            <!-- Row 3: Label + Dropdown -->
+            <div >
+                <label for="dropdown1-reservation-form" >Отстъпка</label>
+                <select id="dropdown1-reservation-form">
+                    <option value="0">0%</option>
+                    <option value="5">5%</option>
+                    <option value="10">10%</option>
+                    <option value="15">15%</option>
+
+                </select>
+            </div>
+            <div >
+                <input type="checkbox" id="check1-form">
+            </div>
+            <div >
+                <input type="checkbox" id="check2-form">
+            </div>
+            <div >
+                <input type="checkbox" id="check3-form">
+            </div>
+            <div >
+                <input type="checkbox" id="check4-form">
+            </div>
+            <div >
+                <input type="checkbox" id="check5-form">
+            </div>
+            <div >
+                <input type="checkbox" id="check6-form">
+            </div>
+            <div >
+                <input type="checkbox" id="check7-form">
+            </div>
+            <div >
+                <input type="checkbox" id="check8-form">
+            </div>
+            <div >
+                <input type="checkbox" id="check9-form">
+            </div>
+            <div >
+                <input type="checkbox" id="check10-form">
+            </div>
+            <div >
+                <input type="checkbox" id="check11-form">
+            </div>
+            <div >
+                <input type="checkbox" id="check12-form">
+            </div>
+
+            <div >
+                <input type="text" id="check3-input-form" >
+            </div>
+            <div >
+                <input type="text" id="check4-input-form">
+            </div>
+            <div >
+                <input type="text" id="check5-input-form">
+            </div>
+            <div >
+                <input type="text" id="check6-input-form" >
+            </div>
+            <div >
+                <input type="text" id="check1-price-form">
+            </div>
+            <div >
+                <input type="text" id="check2-price-form" >
+            </div>
+            <div >
+                <input type="text" id="check3-price-form">
+            </div>
+            <div >
+                <input type="text" id="check4-price-form" >
+            </div>
+            <div >
+                <input type="text" id="check5-price-form" >
+            </div>
+            <div >
+                <input type="text" id="check6-price-form">
+            </div>
+            <div >
+                <input type="text" id="check7-price-form">
+            </div>
+            <div >
+                <input type="text" id="check8-price-form" >
+            </div>
+            <div >
+                <input type="text" id="check9-price-form" >
+            </div>
+            <div >
+                <input type="text" id="check10-price-form">
+            </div>
+            <div >
+                <input type="text" id="check11-price-form" >
+            </div>
+            <div >
+                <input type="text" id="check12-price-form" >
+            </div>
+
+            <div >
+                <input type="text" id="check7-deposit-form" >
+            </div>
+            <div >
+                <input type="text" id="check8-deposit-form" >
+            </div>
+            <div >
+                <input type="text" id="check9-deposit-form">
+            </div>
+            <div >
+                <input type="text" id="check10-deposit-form" >
+            </div>
+            <div >
+                <input type="text" id="check11-deposit-form" >
+            </div>
+            <div >
+                <input type="text" id="check12-deposit-form" >
+            </div>
+            <div >
+                <textarea id="textarea-form" ></textarea>
+            </div>
+            <div>
+                <input type="text" id="input2-payments-form" >
+                <input type="text" id="input3-payments-form" >
+                <input type="text" id="input4-payments-form" >
+                <input type="text" id="input5-payments-form" >
+                <input type="text" id="input6-payments-form" >
+                <input type="text" id="input7-payments-form" >
+            </div>
+
+        </form>
+        <div class="column" style="max-width: 10%;">
+            <a href="contracts.html" class="button">Нов договор</a>
+            <a class="button" id="saveButton">Запази</a>
+            <a class="button" id="editButton">Редактирай</a>
+            <a class="button" id="deleteButton">Изтрий</a>
+            <a class="button" id="continueButton">Продължи</a>
+            <a class="button" id="searchButton">Търсене</a>
+            <a class="button" id="printButton">Принтирай</a>
         </div>
+        <!-- Search Modal -->
+        <div id="searchModal" class="modal" style="display:none;">
+            <div class="modal-content">
+                <span class="close" id="closeSearchModal">&times;</span>
+                <h2>Търсене</h2>
+                
+                <!-- Filters Section -->
+                <div class="filters">
+                    <input type="text" id="filter-name" placeholder="Име">
+                    <input type="text" id="filter-email" placeholder="ЕГН">
+                    <input type="text" id="filter-phone" placeholder="Телефон">
+                    <input type="text" id="filter-reservation" placeholder="Резервация">
+                    <input type="text" id="reg-num" placeholder="Рег. №">
+                    <input type="date" id="filter-start-date" placeholder="Дата даване">
+                    <input type="date" id="filter-end-date" placeholder="Дата връщане">
+                </div>
+                
+                <!-- Table Section -->
+                <table id="search-data">
+                    <thead>
+                        <tr>
+                            <th>Име</th>
+                            <th>ЕГН</th>
+                            <th>Телефон</th>
+                            <th>Резервация</th>
+                            <th>Място даване</th>
+                            <th>Дата даване</th>
+                            <th>Място връщане</th>
+                            <th>Дата връщане</th>
+                            <th>Рег. №</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Search results will be populated here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+<style>
+    .filters {
+    display: flex; /* Use flexbox for layout */
+    flex-wrap: wrap; /* Allow filters to wrap onto the next line if needed */
+    justify-content: flex-start; /* Align to the left */
+    margin-bottom: 20px; /* Space below the filters */
+}
+
+.filters input {
+    width: 100%; /* Make inputs take full width */
+    max-width: 150px; /* Limit the maximum width */
+    padding: 8px; /* Add some padding */
+    margin-right: 10px; /* Space between inputs */
+    border: 1px solid #ccc; /* Add a border */
+    border-radius: 4px; /* Round the corners */
+}
+
+.filters input:last-child {
+    margin-right: 0; /* No margin for the last input */
+}
+#searchModal{
+    min-width: 100%;
+
+}
+#searchModal .modal-content{
+    min-width: 98%;
+}
+</style>        
+<!-- <div id="printArea" style="visibility: hidden;">
+    <table>
+        <thead>
+            <tr>
+                <th>Header 1</th>
+                <th>Header 2</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Data 1</td>
+                <td>Data 2</td>
+            </tr>
+            <tr>
+                <td>Data 3</td>
+                <td>Data 4</td>
+            </tr>
+        </tbody>
+    </table>
+    <div>
+        <p>This content will not be printed.</p>
     </div>
+</div>
+<style>
+    /* styles.css */
+
+@media print {
+    body * {
+        visibility: hidden; /* Hide everything by default */
+    }
+
+    #printArea,
+    #printArea * {
+        visibility: visible; /* Show only the print area */
+    }
+
+    #printArea {
+        position: absolute; /* Remove from normal flow */
+        left: 0;
+        top: 0; /* Position it correctly on the printed page */
+    }
+
+    /* Optional: Customize the table styles for printing */
+    table {
+        width: 100%;
+        border-collapse: collapse; /* Collapse borders */
+    }
+
+    th, td {
+        border: 1px solid black; /* Add borders */
+        padding: 8px; /* Add padding */
+        text-align: left; /* Align text to the left */
+    }
+
+    th {
+        background-color: #f2f2f2; /* Add a background color to header */
+    }
+}
+
+</style> -->
+    </div>
+    <script src="contractScript.js"></script>
+    <script src="contractScript2.js"></script>
+    <script src="contractScript3.js"></script>
+
 </body>
 </html>
